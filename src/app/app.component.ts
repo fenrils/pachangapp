@@ -19,13 +19,13 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      /*this.auth.Session.subscribe(session=>{
+      this.auth.Session.subscribe(session=>{
         if(session){
             this.rootPage = HomePage;
         } else {
             this.rootPage = LoginPage;
         }
-      });*/
+      });
       statusBar.styleDefault();
       splashScreen.hide();
     });

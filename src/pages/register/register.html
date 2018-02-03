@@ -18,55 +18,55 @@
     <ion-list>
         <form>
 
-            <ion-item>
-                <ion-label color="textTitle" fixed>Email</ion-label>
-              </ion-item>
+
           <ion-item>
-            <ion-label floating>Email</ion-label>
-            <ion-input [(ngModel)]="user.email" name="email" type="text" autocapitalize="off" required></ion-input>
+              <ion-label color="textTitle" fixed>Email</ion-label>
+            <!--<ion-label floating>Email</ion-label>-->
+            <ion-input [(ngModel)]="user.email" placeholder="Email" name="email" type="text" autocapitalize="off" required></ion-input>
           </ion-item>
     
+
           <ion-item>
               <ion-label color="textTitle" fixed>Contraseña</ion-label>
-            </ion-item>
-          <ion-item>
-            <ion-label floating>Contraseña</ion-label>
-              <ion-input [(ngModel)]="user.password" name="password" type="password" required>
+            <!--<ion-label floating>Contraseña</ion-label>-->
+              <ion-input [(ngModel)]="user.password" placeholder="Contraseña" name="password" type="password" required>
             </ion-input>
           </ion-item>
 
           <ion-item>
               <ion-label color="textTitle" fixed>Repetir Contraseña</ion-label>
-            </ion-item>
-          <ion-item>
-              <ion-label floating>Repetir Contraseña</ion-label>
-                <ion-input [(ngModel)]="user.password2" name="password2" type="password" required>
+              <!--<ion-label floating>Repetir Contraseña</ion-label>-->
+                <ion-input [(ngModel)]="user.password2" placeholder="Repite Contraseña" name="password2" type="password" >
               </ion-input>
             </ion-item>
             
+
             <ion-item>
-                <ion-label color="textTitle" fixed>Nickname</ion-label>
-              </ion-item>
-            <ion-item>
-              <ion-label floating>Nickname</ion-label>
-                <ion-input [(ngModel)]="user.nick" name="nick" type="text" required>
+                <ion-label color="textTitle" fixed>Nombre de Usuario</ion-label>
+              <!--<ion-label floating>Nickname</ion-label>-->
+                <ion-input [(ngModel)]="user.nick" placeholder="Nick" name="nick" type="text" >
               </ion-input>
             </ion-item>
 
-            <ion-item>
-              <ion-label color="textTitle" fixed>Edad</ion-label>
-            </ion-item>
-            <ion-item>
-                <ion-datetime [(ngModel)]="user.age" displayFormat="MM/DD/YYYY" ></ion-datetime>
-            </ion-item>
 
             <ion-item>
-                <ion-label color="textTitle" fixed>Nivel</ion-label>
+                <ion-label color="textTitle" fixed>Edad</ion-label>
+                <ion-datetime  displayFormat="D MMMM YYYY" pickerFormat = "D MMM YYYY" placeholder="12 Febrero 1992" min="1940" max="2008-01-01"
+                monthNames= "Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+                monthShortNames= "Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"></ion-datetime>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label color="textTitle">Nivel de habilidad</ion-label>
+                <ion-select interface= "action-sheet" okText="Elegir" cancelText="Cancelar">
+                    <ion-option value="1">No he jugao en mi vida Hulio</ion-option>
+                    <ion-option value="2">Se chutar el balon</ion-option>
+                    <ion-option value="3">Puedo correr sin mirar el balon</ion-option>
+                    <ion-option value="4">Regateo que da miedo</ion-option>
+                    <ion-option value="5">El puto D10S del futbol</ion-option>
+                  </ion-select>
               </ion-item>
-            <!--<ion-item>
-                  <ion-range min="0" max="5" step="1" [(ngModel)]="user.level">
-                </ion-range>
-              </ion-item>-->
 
 
                 
@@ -79,7 +79,7 @@
                   ion-button 
                   (click)="signin()"
                   type="submit"
-                  color="primary"
+                  color="buttonValidate"
                   block
                 >
                  Registrarse

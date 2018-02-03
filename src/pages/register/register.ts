@@ -19,6 +19,7 @@ export class RegisterPage {
 // Variables
 user= { email : '', password : '', password2 : '', nick : '', age: '', level : ''};
 
+
 //Constructor
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
