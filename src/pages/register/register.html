@@ -14,5 +14,78 @@
 
 
 <ion-content padding>
+<p>Registro</p>
+    <ion-list>
+        <form>
+
+            <ion-item>
+                <ion-label color="textTitle" fixed>Email</ion-label>
+              </ion-item>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input [(ngModel)]="user.email" name="email" type="text" autocapitalize="off" required></ion-input>
+          </ion-item>
+    
+          <ion-item>
+              <ion-label color="textTitle" fixed>Contraseña</ion-label>
+            </ion-item>
+          <ion-item>
+            <ion-label floating>Contraseña</ion-label>
+              <ion-input [(ngModel)]="user.password" name="password" type="password" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label color="textTitle" fixed>Repetir Contraseña</ion-label>
+            </ion-item>
+          <ion-item>
+              <ion-label floating>Repetir Contraseña</ion-label>
+                <ion-input [(ngModel)]="user.password2" name="password2" type="password" required>
+              </ion-input>
+            </ion-item>
+            
+            <ion-item>
+                <ion-label color="textTitle" fixed>Nickname</ion-label>
+              </ion-item>
+            <ion-item>
+              <ion-label floating>Nickname</ion-label>
+                <ion-input [(ngModel)]="user.nick" name="nick" type="text" required>
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label color="textTitle" fixed>Edad</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-datetime [(ngModel)]="user.age" displayFormat="MM/DD/YYYY" ></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+                <ion-label color="textTitle" fixed>Nivel</ion-label>
+              </ion-item>
+            <!--<ion-item>
+                  <ion-range min="0" max="5" step="1" [(ngModel)]="user.level">
+                </ion-range>
+              </ion-item>-->
+
+
+                
+                            
+            
+    
+            <div padding>
+        
+                <button
+                  ion-button 
+                  (click)="signin()"
+                  type="submit"
+                  color="primary"
+                  block
+                >
+                 Registrarse
+                </button>
+              </div>
+        </form>
+      </ion-list>
 
 </ion-content>

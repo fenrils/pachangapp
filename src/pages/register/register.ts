@@ -17,7 +17,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 })
 export class RegisterPage {
 // Variables
-user= { email : '', password : ''};
+user= { email : '', password : '', password2 : '', nick : '', age: '', level : ''};
 
 //Constructor
   constructor(public navCtrl: NavController,
