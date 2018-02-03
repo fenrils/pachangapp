@@ -7,10 +7,17 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyApp } from './app.component';
+
+// Pages
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { FirstPage } from '../pages/first/first';
+import { RegisterPage } from '../pages/register/register';
+
+//Providers
 import { AuthProvider } from '../providers/auth/auth';
 
+//Token Firebase (Backend)
 export const firebaseConfig = {
   apiKey: "AIzaSyB8GEPYw1Fvvu-L2GsMaJShNVGk-ZTks34",
   authDomain: "pachangapp-a8ccc.firebaseapp.com",
@@ -24,7 +31,9 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    FirstPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,9 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    FirstPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
