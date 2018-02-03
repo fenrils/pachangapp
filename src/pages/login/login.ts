@@ -18,7 +18,7 @@ import { RegisterPage } from '../register/register';
 export class LoginPage {
 
   //Variables
-  user= { email : '', password : ''};
+  user = { email : '', password : ''};
 
   //Constructor
   constructor(public navCtrl: NavController,
