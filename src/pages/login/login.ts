@@ -16,28 +16,18 @@ import { AuthProvider } from '../../providers/auth/auth';
 })
 export class LoginPage {
 
+  //Variables
   user= { email : '', password : ''};
+
+  //Constructor
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
      public auth : AuthProvider,
      public alertCtrl : AlertController) {
   }
 
-  signin(){
-    this.auth.registerUser(this.user.email,this.user.password)
-    .then((user) => {
-      // El usuario se ha creado correctamente
-    })
-    .catch(err=>{
-      let alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: err.message,
-        buttons: ['Aceptar']
-      });
-      alert.present();
-    })
-  }
-
+ 
+  //Functions
   login()
     {
       this.auth.loginUser(this.user.email,this.user.password ).then((user) => { console.log(user) })
