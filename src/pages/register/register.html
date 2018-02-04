@@ -53,13 +53,13 @@
                 <ion-label color="textTitle" fixed>Edad</ion-label>
                 <ion-datetime  displayFormat="D MMMM YYYY" pickerFormat = "D MMM YYYY" placeholder="12 Febrero 1992" min="1940" max="2008-01-01"
                 monthNames= "Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
-                monthShortNames= "Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"></ion-datetime>
+                monthShortNames= "Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic" [(ngModel)]="user.age" [ngModelOptions]="{standalone: true}"></ion-datetime>
             </ion-item>
 
 
             <ion-item>
                 <ion-label color="textTitle">Nivel de habilidad</ion-label>
-                <ion-select interface= "action-sheet" okText="Elegir" cancelText="Cancelar">
+                <ion-select interface= "action-sheet" okText="Elegir" cancelText="Cancelar" [(ngModel)]="user.level" [ngModelOptions]="{standalone: true}">
                     <ion-option value="1">No he jugao en mi vida Hulio</ion-option>
                     <ion-option value="2">Se chutar el balon</ion-option>
                     <ion-option value="3">Puedo correr sin mirar el balon</ion-option>
