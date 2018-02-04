@@ -30,9 +30,9 @@ user = { email : '', password : '', password2 : '', nick : '', age: '', level : 
 
  //Functions
  signin(){
-  this.auth.registerUser(this.user.email,this.user.password)
+  this.auth.registerUser(this.user)
   .then((user) => {
-    // El usuario se ha creado correctamente
+    
   })
   .catch(err=>{
     let alert = this.alertCtrl.create({
