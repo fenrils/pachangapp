@@ -14,33 +14,48 @@
 
 
 <ion-content padding>
-    <p>Bienvenido a PachangApp</p>
+  <p>Bienvenido a PachangApp</p>
 
-    <ion-list>
-        <form>
-    
-            <div padding>
-                <button
-                    ion-button 
-                    (click)="login()"
-                    type="submit"
-                    color="buttonValidate"
-                    block
-                >
-                  Iniciar sesion
-                </button>
-        
-                <button
-                  ion-button 
-                  (click)="register()"
-                  type="submit"
-                  color="buttonValidate"
-                  block
-                >
-                 Registrarse
-                </button>
-              </div>
-        </form>
-      </ion-list>
+  <ion-list>
+    <form>
+
+      <div padding>
+        <button ion-button (click)="setEvent()" type="submit" color="buttonValidate" block>
+          set Event
+        </button>
+
+        <button ion-button (click)="getAllEvents()" type="submit" color="buttonValidate" block>
+          get Events
+        </button>
+      </div>
+    </form>
+  </ion-list>
+  <div *ngFor="let event of events">
+    <ion-card>
+
+      <img src="">
+      <ion-fab right top>
+        <button ion-fab>
+          <ion-icon name={{event.name}}></ion-icon>
+        </button>
+      </ion-fab>
+
+      <ion-item>
+        <ion-icon name="football" item-start large></ion-icon>
+        <h2>{{event.name}}</h2>
+        <p>{{event.description}}</p>
+      </ion-item>
+
+      <ion-item>
+        <span item-left>18 min</span>
+        <span item-left>(2.6 mi)</span>
+        <button ion-button icon-left clear item-end>
+          <ion-icon name="navigate"></ion-icon>
+          Start
+        </button>
+      </ion-item>
+
+    </ion-card>
+  </div>
 
 </ion-content>

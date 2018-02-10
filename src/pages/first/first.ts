@@ -4,6 +4,8 @@ import {AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
+import { EventsProvider } from '../../providers/events/events';
+
 
 /**
  * Generated class for the FirstPage page.
@@ -20,12 +22,14 @@ import { RegisterPage } from '../register/register';
 export class FirstPage {
 
   //Variables
-
+  eventsTmp;
   //Constructor
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,  
     public auth : AuthProvider,
-    public alertCtrl : AlertController) {
+    public alertCtrl : AlertController,
+    public events: EventsProvider ) {
+      this.eventsTmp = [];
  
   }
 
@@ -40,6 +44,28 @@ export class FirstPage {
   //Go to page Register
   register(){
     this.navCtrl.push(RegisterPage);
+  }
+
+  //Pruebas Mock para guardar eventos y recogerlos desde un observer conectad a firebase
+
+  setEvent() {
+    //datos ha especificar para cada evento
+    var params = {
+      name: "Nombre Evento",
+      date: "12/12/2017",
+      description: "Descripcion",
+      numpeople: 3,
+      typeEvent: 1
+    };
+    this.events.setEvent(params);
+  }
+
+  getAllEvents() {
+    this.events.getAllEvents().then(data => {
+      var stringifiedData = JSON.stringify(data);
+      this.eventsTmp = JSON.parse(stringifiedData);
+      console.log(this.eventsTmp);
+    })
   }
 
   ionViewDidLoad() {
