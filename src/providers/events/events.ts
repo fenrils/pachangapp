@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthProvider } from '../../providers/auth/auth';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-import { Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 
 /*
@@ -17,12 +17,8 @@ export class EventsProvider {
 
   }
 
-  getAllEvents(): Promise<any> {
-    return new Promise(resolve => {
-      this.dataBase.list("events").valueChanges().subscribe(data => {
-        resolve(data);
-      })
-    })
+  getAllEvents() {
+      return this.dataBase.list("events").valueChanges();
   }
 
   getEventsUser() {
@@ -35,6 +31,6 @@ export class EventsProvider {
 
   setEvent(params) {
   var id = this.auth.getUserId();
-  return this.dataBase.database.ref('events/' + id).set(params);
+  return this.dataBase.database.ref('events/' + id).push(params);
   }
 }

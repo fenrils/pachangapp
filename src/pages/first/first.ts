@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 import {AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
 import { EventsProvider } from '../../providers/events/events';
+import { Observable } from 'rxjs/Observable';
 
 
 /**
@@ -22,14 +23,19 @@ import { EventsProvider } from '../../providers/events/events';
 export class FirstPage {
 
   //Variables
-  eventsTmp;
+  eventsTmp = [];
   //Constructor
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,  
     public auth : AuthProvider,
     public alertCtrl : AlertController,
+    public modalCtrl: ModalController,
     public events: EventsProvider ) {
-      this.eventsTmp = [];
+      var self = this;
+      this.events.getAllEvents().subscribe(data => {
+        self.eventsTmp = data;
+        console.log(self.eventsTmp);
+      });
  
   }
 
@@ -50,6 +56,8 @@ export class FirstPage {
 
   setEvent() {
     //datos ha especificar para cada evento
+    /*let eventModal = this.modalCtrl.create(Event, { userId: 8675309 });
+    eventModal.present();*/
     var params = {
       name: "Nombre Evento",
       date: "12/12/2017",
@@ -61,7 +69,7 @@ export class FirstPage {
   }
 
   getAllEvents() {
-    this.events.getAllEvents().then(data => {
+    this.events.getAllEvents().subscribe(data => {
       var stringifiedData = JSON.stringify(data);
       this.eventsTmp = JSON.parse(stringifiedData);
       console.log(this.eventsTmp);
@@ -73,3 +81,4 @@ export class FirstPage {
   }
 
 }
+
