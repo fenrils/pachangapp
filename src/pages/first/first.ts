@@ -4,6 +4,8 @@ import {AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
+import { ModalPage } from '../modal/modal';
+
 import { EventsProvider } from '../../providers/events/events';
 import { Observable } from 'rxjs/Observable';
 
@@ -56,16 +58,17 @@ export class FirstPage {
 
   setEvent() {
     //datos ha especificar para cada evento
-    /*let eventModal = this.modalCtrl.create(Event, { userId: 8675309 });
-    eventModal.present();*/
-    var params = {
+    let eventModal = this.modalCtrl.create(ModalPage);
+    eventModal.present();
+    /*var params = {
       name: "Nombre Evento",
       date: "12/12/2017",
       description: "Descripcion",
       numpeople: 3,
       typeEvent: 1
     };
-    this.events.setEvent(params);
+    this.events.setEvent(params);*/
+    
   }
 
   getAllEvents() {

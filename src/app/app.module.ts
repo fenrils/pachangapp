@@ -14,6 +14,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { FirstPage } from '../pages/first/first';
 import { RegisterPage } from '../pages/register/register';
+import { ModalPage } from '../pages/modal/modal';
 
 //Providers
 import { AuthProvider } from '../providers/auth/auth';
@@ -35,7 +36,8 @@ export const firebaseConfig = {
     HomePage,
     LoginPage,
     FirstPage,
-    RegisterPage
+    RegisterPage,
+    ModalPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ export const firebaseConfig = {
     HomePage,
     LoginPage,
     FirstPage,
-    RegisterPage
+    RegisterPage,
+    ModalPage
   ],
   providers: [
     StatusBar,
