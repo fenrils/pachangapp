@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the ModalPage page.
@@ -15,12 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ModalPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public viewCtrl : ViewController, public navParams: NavParams) {
   }
 
   closeModal() {
-    this.navCtrl.pop();
-}
+    this.viewCtrl.dismiss();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalPage');
