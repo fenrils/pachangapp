@@ -14,7 +14,8 @@ import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angul
   templateUrl: 'modal.html',
 })
 export class ModalPage {
-
+  event = {name: '', description: '', date: '', type: ''};
+  
   constructor(public navCtrl: NavController, public viewCtrl : ViewController, public navParams: NavParams) {
   }
 

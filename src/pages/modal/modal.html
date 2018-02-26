@@ -14,8 +14,42 @@
       </ion-buttons>
   </ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
-
+<form>
+        <ion-item>
+        <ion-label floating>Nombre Evento</ion-label>
+        <ion-input [(ngModel)]="event.name" name="eventName" type="text" autocapitalize="off" required></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Descripción</ion-label>
+        <ion-textarea [(ngModel)]="event.description" name="description" autocomplete="on" autocorrect="on"></ion-textarea>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Fecha</ion-label>
+        <ion-datetime  displayFormat="D MMMM YYYY" pickerFormat = "D MMM YYYY"  min="2017-01-01" max="2018-01-01"
+        monthNames= "Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+        monthShortNames= "Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic" [(ngModel)]="event.date" [ngModelOptions]="{standalone: true}"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Tipo Evento</ion-label>
+        <ion-select interface= "action-sheet" okText="Elegir" cancelText="Cancelar" [(ngModel)]="event.type" [ngModelOptions]="{standalone: true}">
+            <ion-option value="1">Futbol</ion-option>
+            <ion-option value="2">Baloncesto</ion-option>
+            <ion-option value="3">Tenis</ion-option>
+            <ion-option value="4">Padel</ion-option>
+            <ion-option value="5">Otros</ion-option>
+        </ion-select>
+    </ion-item>
+    <div padding>
+        <button
+            ion-button 
+            (click)="addEvent()"
+            type="submit"
+            color="buttonValidate"
+            block
+        >
+        Crear Evento
+        </button>
+    </div>
+</form>
 </ion-content>
