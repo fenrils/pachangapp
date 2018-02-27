@@ -20,7 +20,7 @@
 <ion-content padding>
 
   <div *ngFor="let event of eventsTmp">
-    <ion-card>
+    <!--<ion-card>
       <ion-item>
         <ion-icon name="{{event.typeEvent}}" item-start large></ion-icon>
         <h2>{{event.name}}</h2>
@@ -36,7 +36,37 @@
         </button>
       </ion-item>
 
-    </ion-card>
+    </ion-card>-->
+    <ion-card>
+        <img src="assets/imgs/{{event.typeEvent}}.jpeg"/>
+        <ion-card-content>
+          <ion-card-title center text-center>
+            {{event.name}}
+              <ion-icon name="{{event.typeEvent}}" item-right></ion-icon>
+          </ion-card-title>
+          <ion-note>
+              Descripción
+            </ion-note>
+          <p>
+              {{event.description}}
+          </p>
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon icon-left clear small name="calendar"></ion-icon>
+                <div>{{event.date}}</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="timer"></ion-icon>
+                <div>{{event.duration}} mins</div>
+              </button>
+            </ion-col>
+            
+          </ion-row>
+      </ion-card>
   </div>
 
 </ion-content>

@@ -26,9 +26,7 @@
     </ion-item>
     <ion-item>
         <ion-label floating>Fecha</ion-label>
-        <ion-datetime  displayFormat="D MMMM YYYY" pickerFormat = "D MMM YYYY"  min="2017-01-01" max="2018-01-01"
-        monthNames= "Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
-        monthShortNames= "Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic" [(ngModel)]="event.date" [ngModelOptions]="{standalone: true}"></ion-datetime>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="event.date" [ngModelOptions]="{standalone: true}"></ion-datetime>
     </ion-item>
     <ion-item>
         <ion-label floating>Tipo Evento</ion-label>
@@ -39,6 +37,19 @@
             <ion-option value="game-controller-b">Gaming</ion-option>
         </ion-select>
     </ion-item>
+    <ion-item>
+            <ion-label floating>Duración</ion-label>
+            <ion-select interface= "action-sheet" okText="Elegir" cancelText="Cancelar" [(ngModel)]="event.duration" [ngModelOptions]="{standalone: true}">
+                <ion-option value="15">15 mins</ion-option>
+                <ion-option value="30">30 mins</ion-option>
+                <ion-option value="45">45 mins</ion-option>
+                <ion-option value="60">60 mins</ion-option>
+                <ion-option value="90">90 mins</ion-option>
+                <ion-option value="120">120 mins</ion-option>
+                <ion-option value="+120">+120 mins</ion-option>
+                
+            </ion-select>
+        </ion-item>
     <div padding>
         <button
             ion-button 

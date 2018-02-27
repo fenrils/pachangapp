@@ -18,7 +18,7 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'modal.html',
 })
 export class ModalPage {
-  event = {name: '', description: '', date: '', type: ''};
+  event = {name: '', description: '', date: '', type: '', duration: ''};
   
   constructor(public auth : AuthProvider, public navCtrl: NavController,public events: EventsProvider, public viewCtrl : ViewController, public navParams: NavParams) {
   }
@@ -35,7 +35,6 @@ export class ModalPage {
       typeEvent: this.event.type,
       idUser: this.auth.getUserId()
     };
-    console.log("PARAMETROS"+ JSON.stringify(params));
     this.events.setEvent(params);
     this.closeModal();
   }
