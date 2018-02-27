@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angular';
+import { EventsProvider } from '../../providers/events/events';
+import { AuthProvider } from '../../providers/auth/auth';
+
+
 
 /**
  * Generated class for the ModalPage page.
@@ -16,11 +20,24 @@ import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angul
 export class ModalPage {
   event = {name: '', description: '', date: '', type: ''};
   
-  constructor(public navCtrl: NavController, public viewCtrl : ViewController, public navParams: NavParams) {
+  constructor(public auth : AuthProvider, public navCtrl: NavController,public events: EventsProvider, public viewCtrl : ViewController, public navParams: NavParams) {
   }
 
   closeModal() {
     this.viewCtrl.dismiss();
+  }
+
+  addEvent() {
+    var params = {
+      name: this.event.name,
+      date: this.event.date,
+      description: this.event.description,
+      typeEvent: this.event.type,
+      idUser: this.auth.getUserId()
+    };
+    console.log("PARAMETROS"+ JSON.stringify(params));
+    this.events.setEvent(params);
+    this.closeModal();
   }
 
   ionViewDidLoad() {

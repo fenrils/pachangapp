@@ -18,7 +18,8 @@ export class EventsProvider {
   }
 
   getAllEvents() {
-      return this.dataBase.list("events").valueChanges();
+      return this.dataBase.database.ref("events/");
+
   }
 
   getEventsUser() {
@@ -30,7 +31,6 @@ export class EventsProvider {
   }
 
   setEvent(params) {
-  var id = this.auth.getUserId();
-  return this.dataBase.database.ref('events/' + id).push(params);
+  return this.dataBase.database.ref('events/').push(params);
   }
 }

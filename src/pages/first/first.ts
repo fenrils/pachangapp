@@ -25,7 +25,7 @@ import { Observable } from 'rxjs/Observable';
 export class FirstPage {
 
   //Variables
-  eventsTmp = [];
+  eventsTmp: Array<any>;
   //Constructor
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,  
@@ -34,8 +34,16 @@ export class FirstPage {
     public modalCtrl: ModalController,
     public events: EventsProvider ) {
       var self = this;
-      this.events.getAllEvents().subscribe(data => {
-        self.eventsTmp = data;
+      this.events.getAllEvents().on('value', function(snapshot){
+        let value = snapshot.val();
+        let keyArr: any[] = Object.keys(value),
+        dataArr = [];
+
+      keyArr.forEach((key: any) => {
+        console.log(value[key]);
+        dataArr.push(value[key]);
+      });
+        self.eventsTmp = dataArr;
         console.log(self.eventsTmp);
       });
  
@@ -57,18 +65,8 @@ export class FirstPage {
   //Pruebas Mock para guardar eventos y recogerlos desde un observer conectad a firebase
 
   setEvent() {
-    //datos ha especificar para cada evento
     let eventModal = this.modalCtrl.create(ModalPage);
     eventModal.present();
-    /*var params = {
-      name: "Nombre Evento",
-      date: "12/12/2017",
-      description: "Descripcion",
-      numpeople: 3,
-      typeEvent: 1
-    };
-    this.events.setEvent(params);*/
-    
   }
 
   getAllEvents() {
