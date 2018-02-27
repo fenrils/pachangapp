@@ -20,23 +20,6 @@
 <ion-content padding>
 
   <div *ngFor="let event of eventsTmp">
-    <!--<ion-card>
-      <ion-item>
-        <ion-icon name="{{event.typeEvent}}" item-start large></ion-icon>
-        <h2>{{event.name}}</h2>
-        <p>{{event.description}}</p>
-      </ion-item>
-
-      <ion-item>
-        <span item-left><b>Fecha:</b> {{event.date}}</span>
-        <span item-left><b>Duración:</b> 18mins</span>
-        <button ion-button icon-left clear item-end>
-          <ion-icon name="navigate"></ion-icon>
-          
-        </button>
-      </ion-item>
-
-    </ion-card>-->
     <ion-card>
         <img src="assets/imgs/{{event.typeEvent}}.jpeg"/>
         <ion-card-content>

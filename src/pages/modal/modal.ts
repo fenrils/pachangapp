@@ -32,6 +32,7 @@ export class ModalPage {
       name: this.event.name,
       date: this.event.date,
       description: this.event.description,
+      duration: this.event.duration,
       typeEvent: this.event.type,
       idUser: this.auth.getUserId()
     };
