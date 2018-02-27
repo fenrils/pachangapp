@@ -26,6 +26,7 @@ export class FirstPage {
 
   //Variables
   eventsTmp: Array<any>;
+  eventsConstant: Array<any>;
   //Constructor
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,  
@@ -43,6 +44,7 @@ export class FirstPage {
         dataArr.push(value[key]);
       });
         self.eventsTmp = dataArr;
+        self.eventsConstant = self.eventsTmp;
       });
  
   }
@@ -66,7 +68,26 @@ export class FirstPage {
     let eventModal = this.modalCtrl.create(ModalPage);
     eventModal.present();
   }
-
+  getEvents(searchbar) {
+    this.eventsTmp = this.eventsConstant;
+    var q = searchbar.srcElement.value;
+  
+    if (!q) {
+      return;
+    }
+  
+    this.eventsTmp = this.eventsTmp.filter((v) => {
+      if(v.name && q) {
+        if (v.name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  
+    console.log(q, this.eventsTmp.length);
+  
+  }
  
 
   ionViewDidLoad() {

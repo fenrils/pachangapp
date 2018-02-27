@@ -13,12 +13,10 @@
         <ion-icon name="add"></ion-icon>Add Event</button>
     </ion-buttons>
   </ion-navbar>
-
+  <ion-searchbar (ionInput)="getEvents($event)"></ion-searchbar>    
+  
 </ion-header>
-
-
 <ion-content padding>
-
   <div *ngFor="let event of eventsTmp">
     <ion-card>
         <img src="assets/imgs/{{event.typeEvent}}.jpeg"/>
