@@ -40,11 +40,9 @@ export class FirstPage {
         dataArr = [];
 
       keyArr.forEach((key: any) => {
-        console.log(value[key]);
         dataArr.push(value[key]);
       });
         self.eventsTmp = dataArr;
-        console.log(self.eventsTmp);
       });
  
   }
@@ -69,13 +67,7 @@ export class FirstPage {
     eventModal.present();
   }
 
-  getAllEvents() {
-    this.events.getAllEvents().subscribe(data => {
-      var stringifiedData = JSON.stringify(data);
-      this.eventsTmp = JSON.parse(stringifiedData);
-      console.log(this.eventsTmp);
-    })
-  }
+ 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FirstPage');

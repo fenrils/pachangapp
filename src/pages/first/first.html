@@ -6,30 +6,19 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>PachangApp - Inicio</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>PachangApp</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="setEvent()">
+        <ion-icon name="add"></ion-icon>Add Event</button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <p>Bienvenido a PachangApp</p>
 
-  <ion-list>
-    <form>
-
-      <div padding>
-        <button ion-button (click)="setEvent()" type="submit" color="buttonValidate" block>
-          set Event
-        </button>
-
-        <button ion-button (click)="getAllEvents()" type="submit" color="buttonValidate" block>
-          get Events
-        </button>
-      </div>
-    </form>
-  </ion-list>
   <div *ngFor="let event of eventsTmp">
     <ion-card>
       <ion-item>
@@ -39,11 +28,11 @@
       </ion-item>
 
       <ion-item>
-        <span item-left>18 min</span>
-        <span item-left>(2.6 mi)</span>
+        <span item-left><b>Fecha:</b> {{event.date}}</span>
+        <span item-left><b>Duración:</b> 18mins</span>
         <button ion-button icon-left clear item-end>
           <ion-icon name="navigate"></ion-icon>
-          Start
+          
         </button>
       </ion-item>
 
