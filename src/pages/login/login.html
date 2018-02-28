@@ -4,33 +4,35 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-content scroll="false">
-  <section class="login-container">
-    <div class="login-icon">
-      <img src="assets/imgs/login.png" class="logo" />
-    </div>
-    <form>
-      <div class = "data-login">
-        <ion-item>
-          <ion-label floating>Email</ion-label>
-          <ion-input [(ngModel)]="user.email" name="email" type="text" autocapitalize="off" required></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label floating>Contraseña</ion-label>
-          <ion-input [(ngModel)]="user.password" name="password" type="password" required>
-          </ion-input>
-        </ion-item>
+<ion-content scroll="true">
+  <ion-list>
+    <section class="login-container">
+      <div class="login-icon">
+        <img src="assets/imgs/login.png" class="logo" />
       </div>
-      <div class="buttons-login">
-        <button ion-button (click)="login()" type="submit" class="color-login" block>
-          Login
-        </button>
+      <form>
+        <div class="data-login">
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input [(ngModel)]="user.email" name="email" type="text" autocapitalize="off" required></ion-input>
+          </ion-item>
 
-        <button ion-button (click)="register()" type="submit" class="color-login" block>
-          Registrarse
-        </button>
-      </div>
-    </form>
-  </section>
+          <ion-item>
+            <ion-label floating>Contraseña</ion-label>
+            <ion-input [(ngModel)]="user.password" name="password" type="password" required>
+            </ion-input>
+          </ion-item>
+        </div>
+        <div class="buttons-login">
+          <button ion-button (click)="login()" type="submit" class="color-login" block>
+            Login
+          </button>
+
+          <button ion-button (click)="register()" type="submit" class="color-login" block>
+            Registrarse
+          </button>
+        </div>
+      </form>
+    </section>
+  </ion-list>
 </ion-content>
