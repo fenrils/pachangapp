@@ -28,21 +28,17 @@ export class FirstPage {
   eventsTmp: Array<any>;
   eventsConstant: Array<any>;
   //Constructor
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams,  
-    public auth : AuthProvider,
-    public alertCtrl : AlertController,
-    public modalCtrl: ModalController,
-    public events: EventsProvider ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public auth : AuthProvider,public alertCtrl : AlertController, public modalCtrl: ModalController, public events: EventsProvider ) {
       var self = this;
       this.events.getAllEvents().on('value', function(snapshot){
         let value = snapshot.val();
         let keyArr: any[] = Object.keys(value),
         dataArr = [];
 
-      keyArr.forEach((key: any) => {
-        dataArr.push(value[key]);
-      });
+        keyArr.forEach((key: any) => {
+          dataArr.push(value[key]);
+        });
+        
         self.eventsTmp = dataArr;
         self.eventsConstant = self.eventsTmp;
       });
@@ -51,23 +47,11 @@ export class FirstPage {
 
   //Functions
 
-  //Go to page Login
-  login(){
-    this.navCtrl.push(LoginPage);
-
-  }
-
-  //Go to page Register
-  register(){
-    this.navCtrl.push(RegisterPage);
-  }
-
-  //Pruebas Mock para guardar eventos y recogerlos desde un observer conectad a firebase
-
   setEvent() {
     let eventModal = this.modalCtrl.create(ModalPage);
     eventModal.present();
   }
+
   getEvents(searchbar) {
     this.eventsTmp = this.eventsConstant;
     var q = searchbar.srcElement.value;
@@ -83,10 +67,7 @@ export class FirstPage {
         }
         return false;
       }
-    });
-  
-    console.log(q, this.eventsTmp.length);
-  
+    });  
   }
  
 

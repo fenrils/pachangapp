@@ -34,7 +34,6 @@ user = { email : '', password : '', password2 : '', nick : '', age: '', level : 
   this.auth.registerUser(this.user)
   .then((user) => {
     this.navCtrl.push(FirstPage);
-    
   })
   .catch(err=>{
     let alert = this.alertCtrl.create({

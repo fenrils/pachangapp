@@ -21,6 +21,7 @@ export class ModalPage {
   event = {name: '', description: '', date: '', type: '', duration: ''};
   
   constructor(public auth : AuthProvider, public navCtrl: NavController,public events: EventsProvider, public viewCtrl : ViewController, public navParams: NavParams) {
+  
   }
 
   closeModal() {
