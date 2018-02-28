@@ -2,12 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 import {AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
-import { LoginPage } from '../login/login';
-import { RegisterPage } from '../register/register';
 import { ModalPage } from '../modal/modal';
-
 import { EventsProvider } from '../../providers/events/events';
-import { Observable } from 'rxjs/Observable';
 
 
 /**
