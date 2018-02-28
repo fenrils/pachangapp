@@ -5,41 +5,42 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-      <ion-title>New Event</ion-title>
-      <ion-buttons end>
-          <button ion-button icon-only (click)="closeModal()">
-              <ion-icon item-right name="ios-close-outline"></ion-icon>
-          </button>
-      </ion-buttons>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>New Event</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="closeModal()">
+                <ion-icon item-right name="ios-close-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 <ion-content padding>
-<form>
+    <!--<div style="height: 100%;" id="map_canvas"></div>-->
+    <form>
         <ion-item>
-        <ion-label floating>Nombre Evento</ion-label>
-        <ion-input [(ngModel)]="event.name" name="eventName" type="text" autocapitalize="off" required></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Descripción</ion-label>
-        <ion-textarea [(ngModel)]="event.description" name="description" autocomplete="on" autocorrect="on"></ion-textarea>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Fecha</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="event.date" [ngModelOptions]="{standalone: true}"></ion-datetime>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Tipo Evento</ion-label>
-        <ion-select interface= "action-sheet" okText="Elegir" cancelText="Cancelar" [(ngModel)]="event.type" [ngModelOptions]="{standalone: true}">
-            <ion-option value="football">Futbol</ion-option>
-            <ion-option value="basketball">Baloncesto</ion-option>
-            <ion-option value="tennisball">Tenis</ion-option>
-            <ion-option value="game-controller-b">Gaming</ion-option>
-        </ion-select>
-    </ion-item>
-    <ion-item>
+            <ion-label floating>Nombre Evento</ion-label>
+            <ion-input [(ngModel)]="event.name" name="eventName" type="text" autocapitalize="off" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Descripción</ion-label>
+            <ion-textarea [(ngModel)]="event.description" name="description" autocomplete="on" autocorrect="on"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Fecha</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="event.date" [ngModelOptions]="{standalone: true}"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Tipo Evento</ion-label>
+            <ion-select interface="action-sheet" okText="Elegir" cancelText="Cancelar" [(ngModel)]="event.type" [ngModelOptions]="{standalone: true}">
+                <ion-option value="football">Futbol</ion-option>
+                <ion-option value="basketball">Baloncesto</ion-option>
+                <ion-option value="tennisball">Tenis</ion-option>
+                <ion-option value="game-controller-b">Gaming</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
             <ion-label floating>Duración</ion-label>
-            <ion-select interface= "action-sheet" okText="Elegir" cancelText="Cancelar" [(ngModel)]="event.duration" [ngModelOptions]="{standalone: true}">
+            <ion-select interface="action-sheet" okText="Elegir" cancelText="Cancelar" [(ngModel)]="event.duration" [ngModelOptions]="{standalone: true}">
                 <ion-option value="15">15 mins</ion-option>
                 <ion-option value="30">30 mins</ion-option>
                 <ion-option value="45">45 mins</ion-option>
@@ -47,19 +48,14 @@
                 <ion-option value="90">90 mins</ion-option>
                 <ion-option value="120">120 mins</ion-option>
                 <ion-option value="+120">+120 mins</ion-option>
-                
+
             </ion-select>
         </ion-item>
-    <div padding>
-        <button
-            ion-button 
-            (click)="addEvent()"
-            type="submit"
-            class="button-color-1"
-            block
-        >
-        Crear Evento
-        </button>
-    </div>
-</form>
+
+        <div padding>
+            <button ion-button (click)="addEvent()" type="submit" class="button-color-1" block>
+                Crear Evento
+            </button>
+        </div>
+    </form>
 </ion-content>

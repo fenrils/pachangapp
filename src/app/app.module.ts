@@ -8,6 +8,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { GoogleMaps } from '@ionic-native/google-maps';
+
 
 // Pages
 import { HomePage } from '../pages/home/home';
@@ -59,6 +61,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     EventsProvider

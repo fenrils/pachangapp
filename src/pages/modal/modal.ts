@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
 import { EventsProvider } from '../../providers/events/events';
 import { AuthProvider } from '../../providers/auth/auth';
 
@@ -18,10 +19,11 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'modal.html',
 })
 export class ModalPage {
-  event = {name: '', description: '', date: '', type: '', duration: ''};
-  
-  constructor(public auth : AuthProvider, public navCtrl: NavController,public events: EventsProvider, public viewCtrl : ViewController, public navParams: NavParams) {
-  
+  event = { name: '', description: '', date: '', type: '', duration: '' };
+  map: GoogleMap;
+
+  constructor(public auth: AuthProvider, public navCtrl: NavController, public events: EventsProvider, private googleMaps: GoogleMaps, public viewCtrl: ViewController, public navParams: NavParams) {
+
   }
 
   closeModal() {
@@ -41,8 +43,53 @@ export class ModalPage {
     this.closeModal();
   }
 
+  loadMap() {
+
+    let mapOptions: GoogleMapOptions = {
+      camera: {
+        target: {
+          lat: 43.0741904, // default location
+          lng: -89.3809802 // default location
+        },
+        zoom: 18,
+        tilt: 30
+      }
+    };
+
+    this.map = GoogleMaps.create('map_canvas', mapOptions);
+
+    // Wait the MAP_READY before using any methods.
+    this.map.one(GoogleMapsEvent.MAP_READY)
+      .then(() => {
+        // Now you can use all methods safely.
+        this.getPosition();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+  }
+
+  getPosition(): void {
+    this.map.getMyLocation()
+      .then(response => {
+        this.map.moveCamera({
+          target: response.latLng
+        });
+        this.map.addMarker({
+          title: 'My Position',
+          icon: 'blue',
+          animation: 'DROP',
+          position: response.latLng
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ModalPage');
+    this.loadMap();
   }
 
 }
