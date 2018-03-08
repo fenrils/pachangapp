@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
+import { FirstPage } from '../first/first';
 
 /**
  * Generated class for the RegisterPage page.
@@ -32,7 +33,7 @@ user = { email : '', password : '', password2 : '', nick : '', age: '', level : 
  signin(){
   this.auth.registerUser(this.user)
   .then((user) => {
-    
+    this.navCtrl.push(FirstPage);
   })
   .catch(err=>{
     let alert = this.alertCtrl.create({

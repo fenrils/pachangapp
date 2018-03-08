@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { RegisterPage } from '../register/register';
+import { FirstPage } from '../first/first';
 /**
  * Generated class for the LoginPage page.
  *
@@ -33,7 +34,9 @@ export class LoginPage {
   //Pick user and password from form and check if is in DB
   login()
     {
-      this.auth.loginUser(this.user.email,this.user.password ).then((user) => { console.log(user) })
+      this.auth.loginUser(this.user.email,this.user.password ).then((user) => { 
+        this.navCtrl.push(FirstPage); 
+      })
       .catch(err=>{
         let alert = this.alertCtrl.create({
           title: 'Error',

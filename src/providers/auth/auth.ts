@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import * as firebase from 'firebase/app';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 /*
   Generated class for the AuthProvider provider.
@@ -43,7 +42,7 @@ export class AuthProvider {
 
   readUser(self) {
     var id = this.getUserId();
-    self.dataBase.database.ref('user/' + id).once('value').then((snapshot) =>{
+    self.dataBase.database.ref('user/').once('value').then((snapshot) =>{
       self.getUser(snapshot.val(), self);
     });
   }
@@ -54,13 +53,19 @@ export class AuthProvider {
  //Seters
  setUser(user: any) {
   var id = this.getUserId();
-  return this.dataBase.database.ref('user/' + id).set(user)
+  user.id = id;
+  return this.dataBase.database.ref('user/').push(user)
 }
 
    // Logout de usuario
   logout() {
     this.afAuth.auth.signOut().then(()=>{
-  })
-}
+    })
+  }
+
+  getAllUsers() {
+      return this.dataBase.database.ref("user/");
+  }
+
 
 }

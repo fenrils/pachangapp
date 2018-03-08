@@ -7,15 +7,20 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyApp } from './app.component';
+import { HttpModule } from '@angular/http';
+import { GoogleMaps } from '@ionic-native/google-maps';
+
 
 // Pages
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { FirstPage } from '../pages/first/first';
 import { RegisterPage } from '../pages/register/register';
+import { ModalPage } from '../pages/modal/modal';
 
 //Providers
 import { AuthProvider } from '../providers/auth/auth';
+import { EventsProvider } from '../providers/events/events';
 
 //Token Firebase (Backend)
 export const firebaseConfig = {
@@ -33,14 +38,16 @@ export const firebaseConfig = {
     HomePage,
     LoginPage,
     FirstPage,
-    RegisterPage
+    RegisterPage,
+    ModalPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,13 +55,16 @@ export const firebaseConfig = {
     HomePage,
     LoginPage,
     FirstPage,
-    RegisterPage
+    RegisterPage,
+    ModalPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    EventsProvider
   ]
 })
 export class AppModule {}
