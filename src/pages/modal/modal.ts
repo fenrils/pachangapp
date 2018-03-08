@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angular';
 import { EventsProvider } from '../../providers/events/events';
 import { AuthProvider } from '../../providers/auth/auth';
-import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions } from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, LatLng } from '@ionic-native/google-maps';
 import { FirstPage } from '../first/first';
 
 
@@ -20,7 +20,7 @@ import { FirstPage } from '../first/first';
   templateUrl: 'modal.html',
 })
 export class ModalPage {
-  event = { name: '', description: '', date: '', type: '', duration: '', users: [] };
+  event = { name: '', description: '', date: '', type: '', duration: '', users: [], latlng: [] };
   users = [];
   userIds = [];
   map: GoogleMap;
@@ -94,7 +94,8 @@ export class ModalPage {
       typeEvent: this.event.type,
       idUser: this.auth.getUserId(),
       users: this.event.users,
-      totalUsers: this.event.users.length
+      totalUsers: this.event.users.length,
+      latLng: this.event.latlng
     };
     this.events.setEvent(params);
     this.navCtrl.push(FirstPage);
@@ -120,6 +121,7 @@ export class ModalPage {
         this.getPosition();
         this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(
           (data) => {
+            this.event.latlng = data[0];
             this.getPositionClick(data[0]);
           }
         );
@@ -149,7 +151,7 @@ export class ModalPage {
         this.map.clear();
          this.map.addMarker({
           title: 'El evento sera aqui!!',
-          icon: 'green',
+          icon: 'red',
           animation: 'DROP',
           position: params
         });
