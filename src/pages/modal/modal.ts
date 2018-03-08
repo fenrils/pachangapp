@@ -21,7 +21,7 @@ import { FirstPage } from '../first/first';
 })
 export class ModalPage {
   event = { name: '', description: '', date: '', type: '', duration: '', users: [] };
-  users= [];
+  users = [];
   userIds = [];
   map: GoogleMap;
   usersTmp: Array<any>;
@@ -71,7 +71,7 @@ export class ModalPage {
 
   addParticipant(user) {
     console.log("///" + JSON.stringify(user));
-    
+
     if (this.userIds.indexOf(user.id) <= -1) {
       console.log('entro');
       this.users.push({
@@ -118,6 +118,11 @@ export class ModalPage {
       .then(() => {
         console.log('Map is ready!');
         this.getPosition();
+        this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(
+          (data) => {
+            this.getPositionClick(data[0]);
+          }
+        );
       });
   }
 
@@ -128,7 +133,7 @@ export class ModalPage {
           target: response.latLng
         });
         this.map.addMarker({
-          title: 'My Position',
+          title: 'Tu estas aqui!!',
           icon: 'blue',
           animation: 'DROP',
           position: response.latLng
@@ -137,6 +142,17 @@ export class ModalPage {
       .catch(error => {
         console.log(error);
       });
+  }
+
+  getPositionClick(params): void {
+        console.log(params)
+        this.map.clear();
+         this.map.addMarker({
+          title: 'El evento sera aqui!!',
+          icon: 'green',
+          animation: 'DROP',
+          position: params
+        });
   }
 
 }
