@@ -14,8 +14,8 @@
         </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content padding>
-    <!--<div style="height: 100%;" id="map_canvas"></div>-->
+<ion-content>
+    <div #map style="height: 60%;" id="map"></div>
     <form>
         <ion-item>
             <ion-label floating>Nombre Evento</ion-label>
@@ -50,6 +50,14 @@
                 <ion-option value="+120">+120 mins</ion-option>
 
             </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-searchbar (ionInput)="getEvents($event)"></ion-searchbar> 
+            <div *ngIf="isSearch">
+                <div *ngFor="let user of usersTmp">
+                    {{user.nick}}
+                </div>  
+            </div>              
         </ion-item>
 
         <div padding>

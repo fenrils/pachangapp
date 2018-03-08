@@ -42,7 +42,7 @@ export class AuthProvider {
 
   readUser(self) {
     var id = this.getUserId();
-    self.dataBase.database.ref('user/' + id).once('value').then((snapshot) =>{
+    self.dataBase.database.ref('user/').once('value').then((snapshot) =>{
       self.getUser(snapshot.val(), self);
     });
   }
@@ -53,13 +53,19 @@ export class AuthProvider {
  //Seters
  setUser(user: any) {
   var id = this.getUserId();
-  return this.dataBase.database.ref('user/' + id).set(user)
+  user.id = id;
+  return this.dataBase.database.ref('user/').push(user)
 }
 
    // Logout de usuario
   logout() {
     this.afAuth.auth.signOut().then(()=>{
-  })
-}
+    })
+  }
+
+  getAllUsers() {
+      return this.dataBase.database.ref("user/");
+  }
+
 
 }

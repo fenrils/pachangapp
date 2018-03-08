@@ -6,6 +6,7 @@ import { ModalPage } from '../modal/modal';
 import { EventsProvider } from '../../providers/events/events';
 
 
+
 /**
  * Generated class for the FirstPage page.
  *
@@ -24,7 +25,7 @@ export class FirstPage {
   eventsTmp: Array<any>;
   eventsConstant: Array<any>;
   //Constructor
-  constructor(public navCtrl: NavController, public navParams: NavParams, public auth : AuthProvider,public alertCtrl : AlertController, public modalCtrl: ModalController, public events: EventsProvider ) {
+  constructor( public navCtrl: NavController, public navParams: NavParams, public auth : AuthProvider,public alertCtrl : AlertController, public modalCtrl: ModalController, public events: EventsProvider ) {
       var self = this;
       this.events.getAllEvents().on('value', function(snapshot){
         let value = snapshot.val();
@@ -43,9 +44,10 @@ export class FirstPage {
 
   //Functions
 
+  
+
   setEvent() {
-    let eventModal = this.modalCtrl.create(ModalPage);
-    eventModal.present();
+    this.navCtrl.push(ModalPage);
   }
 
   getEvents(searchbar) {
