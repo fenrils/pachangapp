@@ -52,12 +52,17 @@
             </ion-select>
         </ion-item>
         <ion-item>
-            <ion-searchbar (ionInput)="getEvents($event)"></ion-searchbar> 
-            <div *ngIf="isSearch">
-                <div *ngFor="let user of usersTmp">
-                    {{user.nick}}
-                </div>  
-            </div>              
+            <ion-searchbar (ionInput)="getEvents($event)"></ion-searchbar>
+            <div *ngFor="let user of usersTmp">
+                <ion-card>
+                     <button (click)="addParticipant(user)" ion-item>
+                        <ion-icon name="contact" item-start large></ion-icon>
+                        <h2>{{user.nick}}</h2>
+                        <p>{{user.email}}</p>
+                    </button>
+                </ion-card>
+            </div>
+
         </ion-item>
 
         <div padding>

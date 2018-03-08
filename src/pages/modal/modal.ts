@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef} from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angular';
 import { EventsProvider } from '../../providers/events/events';
 import { AuthProvider } from '../../providers/auth/auth';
@@ -13,37 +13,39 @@ import { FirstPage } from '../first/first';
  * Ionic pages and navigation.
  */
 
- 
+
 @IonicPage()
 @Component({
   selector: 'page-modal',
   templateUrl: 'modal.html',
 })
 export class ModalPage {
-  event = { name: '', description: '', date: '', type: '', duration: '' };
+  event = { name: '', description: '', date: '', type: '', duration: '', users: [] };
+  users= [];
+  userIds = [];
   map: GoogleMap;
   usersTmp: Array<any>;
   usersConstant: Array<any>;
   inSearch: boolean = false;
-  
+
   constructor(private googleMaps: GoogleMaps, public auth: AuthProvider, public navCtrl: NavController, public events: EventsProvider, public viewCtrl: ViewController, public navParams: NavParams) {
     var self = this;
-    this.auth.getAllUsers().on('value', function(snapshot){
+    this.auth.getAllUsers().on('value', function (snapshot) {
       let value = snapshot.val();
       let keyArr: any[] = Object.keys(value),
-      dataArr = [];
+        dataArr = [];
 
       keyArr.forEach((key: any) => {
         dataArr.push(value[key]);
       });
-      
+
       self.usersConstant = dataArr;
     });
   }
 
   ionViewDidLoad() {
     this.loadMap()
-    
+
   }
 
   closeModal() {
@@ -53,22 +55,34 @@ export class ModalPage {
   getEvents(searchbar) {
     this.usersTmp = this.usersConstant;
     var q = searchbar.srcElement.value;
-  
     if (!q) {
-      this.inSearch = false;
       return;
-    } else {
-      this.inSearch = true;
     }
     this.usersTmp = this.usersTmp.filter((v) => {
-      if(v.nick && q.charAt(0) === '@' && q.length > 2) {
+      if (v.nick && q.charAt(0) === '@' && q.length > 2) {
         var k = q.substr(1);
         if (v.nick.toLowerCase().indexOf(k.toLowerCase()) > -1) {
           return true;
         }
         return false;
       }
-    });  
+    });
+  }
+
+  addParticipant(user) {
+    console.log("///" + JSON.stringify(user));
+    
+    if (this.userIds.indexOf(user.id) <= -1) {
+      console.log('entro');
+      this.users.push({
+        'id': user.id,
+        'nick': user.nick,
+        'email': user.email
+      });
+      this.event.users = this.users;
+      this.userIds.push(user.id);
+    }
+    console.log(this.users);
   }
 
   addEvent() {
@@ -78,12 +92,14 @@ export class ModalPage {
       description: this.event.description,
       duration: this.event.duration,
       typeEvent: this.event.type,
-      idUser: this.auth.getUserId()
+      idUser: this.auth.getUserId(),
+      users: this.event.users,
+      totalUsers: this.event.users.length
     };
     this.events.setEvent(params);
     this.navCtrl.push(FirstPage);
   }
-  
+
   loadMap() {
     let mapOptions: GoogleMapOptions = {
       camera: {
@@ -105,22 +121,22 @@ export class ModalPage {
       });
   }
 
-  getPosition(): void{
+  getPosition(): void {
     this.map.getMyLocation()
-    .then(response => {
-      this.map.moveCamera({
-        target: response.latLng
+      .then(response => {
+        this.map.moveCamera({
+          target: response.latLng
+        });
+        this.map.addMarker({
+          title: 'My Position',
+          icon: 'blue',
+          animation: 'DROP',
+          position: response.latLng
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-      this.map.addMarker({
-        title: 'My Position',
-        icon: 'blue',
-        animation: 'DROP',
-        position: response.latLng
-      });
-    })
-    .catch(error =>{
-      console.log(error);
-    });
   }
 
 }
