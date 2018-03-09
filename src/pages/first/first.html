@@ -20,6 +20,7 @@
   </ion-fab>
   <div *ngFor="let event of eventsTmp">
     <ion-card>
+      <button (click)="openEvent(event)" ion-item>
       <img src="assets/imgs/{{event.typeEvent}}.jpeg" />
       <ion-card-content>
         <ion-card-title center text-center>
@@ -54,6 +55,7 @@
         </ion-col>
 
       </ion-row>
+      </button>
     </ion-card>
   </div>
 

@@ -3,6 +3,8 @@ import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angu
 import {AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ModalPage } from '../modal/modal';
+import { DetailPage } from '../detail/detail';
+
 import { EventsProvider } from '../../providers/events/events';
 
 
@@ -66,6 +68,10 @@ export class FirstPage {
         return false;
       }
     });  
+  }
+
+  openEvent(event) {
+    this.navCtrl.push(DetailPage, {'event': event});
   }
  
 

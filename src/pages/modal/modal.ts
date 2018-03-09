@@ -20,7 +20,16 @@ import { FirstPage } from '../first/first';
   templateUrl: 'modal.html',
 })
 export class ModalPage {
-  event = { name: '', description: '', date: '', type: '', duration: '', users: [], latlng: [] };
+  
+  event = { 
+    name: '',
+    description: '', 
+    date: '', 
+    type: '', 
+    duration: '', 
+    users: [], 
+    latlng: [] 
+  };
   users = [];
   userIds = [];
   map: GoogleMap;
