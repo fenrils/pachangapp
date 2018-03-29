@@ -18,7 +18,7 @@ import { FirstPage } from '../first/first';
 })
 export class RegisterPage {
 // Variables
-user = { email : '', password : '', password2 : '', nick : '', age: '', level : ''};
+user = { email : '', password : '', password2 : '', nick : '', age: '', level : '', id : ''};
 
 
 //Constructor
