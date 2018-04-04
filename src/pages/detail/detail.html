@@ -14,7 +14,49 @@
 
 
 <ion-content padding>
-    <div #map style="height: 100%;" id="map"></div>
+    <div #map style="height: 50%;" id="map"></div>
+
+    <ion-card>
+        <ion-card-header>
+          <ion-card-title center text-center> 
+            <h1 center text-center>{{event.data.name}} </h1>
+          </ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content text-center>
+          <p class="description">{{event.data.description}}</p>
+        </ion-card-content>
+      
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon icon-left clear small name="calendar"></ion-icon>
+                <div>{{event.data.date}}</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="timer"></ion-icon>
+                <div>{{event.data.duration}} mins</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="people"></ion-icon>
+                <div>{{event.data.totalUsers}} </div>
+              </button>
+            </ion-col>
+  
+          </ion-row>        
+        </ion-card-content>
+      
+      </ion-card>
+      
+
+
 
 
 </ion-content>
