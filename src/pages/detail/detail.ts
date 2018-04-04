@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, LatLng } from '@ionic-native/google-maps';
+import { EventsProvider } from '../../providers/events/events';
 
 /**
  * Generated class for the DetailPage page.
@@ -18,7 +19,8 @@ export class DetailPage {
   map: GoogleMap;
   event: any;
 
-  constructor(private googleMaps: GoogleMaps, public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(private googleMaps: GoogleMaps, public navCtrl: NavController, public navParams: NavParams, public events: EventsProvider) {
     this.event = this.navParams;
 
     console.log(this.navParams);
@@ -59,6 +61,12 @@ export class DetailPage {
       animation: 'DROP',
       position: this.event.data.latLng
     });
+  }
+
+  setLikeEvent() {
+    var like = this.event.data.like + 1;
+    this.event.data.like = like;
+    this.events.updateLikesEvent(like, this.event.data.id);
   }
 
 

@@ -33,14 +33,15 @@ export class FirstPage {
         let value = snapshot.val();
         let keyArr: any[] = Object.keys(value),
         dataArr = [];
-
         keyArr.forEach((key: any) => {
+          value[key]['id'] = key;
           dataArr.push(value[key]);
+          console.log(dataArr);
         });
         
         self.eventsTmp = dataArr;
         self.eventsConstant = self.eventsTmp;
-      });
+      })
  
   }
 

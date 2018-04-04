@@ -32,4 +32,11 @@ export class EventsProvider {
   setEvent(params) {
   return this.dataBase.database.ref('events/').push(params);
   }
+
+  updateLikesEvent(likes, id) {
+    this.dataBase.database.ref().child('/events/' + id)
+    .set({ likes: likes});
+
+  }
+
 }
