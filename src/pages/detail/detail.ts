@@ -17,11 +17,13 @@ import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, LatLng } from
 export class DetailPage {
   map: GoogleMap;
   event: any;
-  
+
   constructor(private googleMaps: GoogleMaps, public navCtrl: NavController, public navParams: NavParams) {
-    event = this.navParams.get('event');
+    this.event = this.navParams;
+
+    console.log(this.navParams);
   }
-  
+
   ionViewDidLoad() {
     this.loadMap();
   }
@@ -48,21 +50,15 @@ export class DetailPage {
   }
 
   getPosition(): void {
-    this.map.getMyLocation()
-      .then(response => {
-        this.map.moveCamera({
-          target: response.latLng
-        });
-        this.map.addMarker({
-          title: 'Aqui sera el evento!!',
-          icon: 'blue',
-          animation: 'DROP',
-          position: this.event.latlng
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.map.moveCamera({
+      target: this.event.data.latLng
+    });
+    this.map.addMarker({
+      title: 'Aqui sera el evento!!',
+      icon: 'blue',
+      animation: 'DROP',
+      position: this.event.data.latLng
+    });
   }
 
 

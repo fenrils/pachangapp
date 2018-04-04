@@ -71,7 +71,7 @@ export class FirstPage {
   }
 
   openEvent(event) {
-    this.navCtrl.push(DetailPage, {'event': event});
+    this.navCtrl.push(DetailPage, event);
   }
  
 
