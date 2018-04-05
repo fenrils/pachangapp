@@ -12,7 +12,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class AuthProvider {
   public userData: any;
   constructor(private afAuth :  AngularFireAuth, public dataBase: AngularFireDatabase) {
-    console.log('Hello AuthProvider Provider');
   }
 
       // Registro de usuario
@@ -31,7 +30,16 @@ export class AuthProvider {
       .then(user=>Promise.resolve(user))
       .catch(err=>Promise.reject(err))
   }
-  // Getters
+  // Logout de usuario
+  logout() {
+    this.afAuth.auth.signOut().then(()=>{
+    })
+  }
+
+  getAllUsers() {
+    return this.dataBase.database.ref("user/");
+  }
+
   get Session() {
     return this.afAuth.authState;
   }
@@ -50,22 +58,11 @@ export class AuthProvider {
   getUser(user: any = null, self): any {
     self.userData = user;
   }
- //Seters
- setUser(user: any) {
+
+  setUser(user: any) {
   var id = this.getUserId();
   user.id = id;
   return this.dataBase.database.ref('user/').push(user)
-}
-
-   // Logout de usuario
-  logout() {
-    this.afAuth.auth.signOut().then(()=>{
-    })
   }
-
-  getAllUsers() {
-      return this.dataBase.database.ref("user/");
-  }
-
 
 }

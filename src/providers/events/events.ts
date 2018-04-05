@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthProvider } from '../../providers/auth/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { useAnimation } from '@angular/core/src/animation/dsl';
 
 
 /*
@@ -32,10 +33,18 @@ export class EventsProvider {
   return this.dataBase.database.ref('events/').push(params);
   }
 
-  updateLikesEvent(likes, id) {
-    this.dataBase.database.ref('/events/' + id)
-    .update({ likes: likes});
+  updateLikesEvent(likes, userLikes: Array<any>, id: string) {
+    if (userLikes) {
+      userLikes.push(this.auth.getUserId());
+    } else {
+      userLikes = [id];
+    }
+    if (userLikes.indexOf(id) < 0) {
+      this.dataBase.database.ref('/events/' + id)
+      .update({ likes: likes, likesUsers: userLikes });
 
+      return [userLikes, true]
+    } 
   }
 
 }
