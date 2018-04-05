@@ -22,8 +22,6 @@ export class DetailPage {
 
   constructor(private googleMaps: GoogleMaps, public navCtrl: NavController, public navParams: NavParams, public events: EventsProvider) {
     this.event = this.navParams;
-
-    console.log(this.navParams);
   }
 
   ionViewDidLoad() {
@@ -46,7 +44,6 @@ export class DetailPage {
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
-        console.log('Map is ready!');
         this.getPosition();
       });
   }
@@ -64,8 +61,8 @@ export class DetailPage {
   }
 
   setLikeEvent() {
-    var like = this.event.data.like + 1;
-    this.event.data.like = like;
+    var like = this.event.data.likes + 1;
+    this.event.data.likes = like;
     this.events.updateLikesEvent(like, this.event.data.id);
   }
 

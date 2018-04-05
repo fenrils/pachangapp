@@ -18,7 +18,6 @@ export class EventsProvider {
 
   getAllEvents() {
       return this.dataBase.database.ref("events/");
-
   }
 
   getEventsUser() {
@@ -34,8 +33,8 @@ export class EventsProvider {
   }
 
   updateLikesEvent(likes, id) {
-    this.dataBase.database.ref().child('/events/' + id)
-    .set({ likes: likes});
+    this.dataBase.database.ref('/events/' + id)
+    .update({ likes: likes});
 
   }
 
