@@ -18,8 +18,8 @@
 
     <ion-card>
         <ion-card-header>
-          <ion-card-title center text-center> 
-            <h1 center text-center>{{event.data.name}} </h1>
+          <ion-card-title center text-center>
+            <h1 center text-center>{{event.data.name}}</h1>
           </ion-card-title>
         </ion-card-header>
       
@@ -39,14 +39,14 @@
             </ion-col>
             <ion-col>
               <button ion-button icon-left clear small>
-                <ion-icon name="timer"></ion-icon>
-                <div>{{event.data.duration}} mins</div>
+                <ion-icon name="people"></ion-icon>
+                <div>{{event.data.totalUsers}} mins</div>
               </button>
             </ion-col>
             <ion-col>
-              <button ion-button icon-left clear small>
-                <ion-icon name="people"></ion-icon>
-                <div>{{event.data.totalUsers}} </div>
+              <button (click)="setLikeEvent()" ion-button icon-left clear small>
+                <ion-icon name="heart"></ion-icon>
+                <div> {{event.data.likes}} </div>
               </button>
             </ion-col>
   

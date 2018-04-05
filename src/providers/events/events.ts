@@ -18,7 +18,6 @@ export class EventsProvider {
 
   getAllEvents() {
       return this.dataBase.database.ref("events/");
-
   }
 
   getEventsUser() {
@@ -32,4 +31,11 @@ export class EventsProvider {
   setEvent(params) {
   return this.dataBase.database.ref('events/').push(params);
   }
+
+  updateLikesEvent(likes, id) {
+    this.dataBase.database.ref('/events/' + id)
+    .update({ likes: likes});
+
+  }
+
 }

@@ -28,7 +28,8 @@ export class ModalPage {
     type: '', 
     duration: '', 
     users: [], 
-    latlng: [] 
+    latlng: [],
+    likes: 0
   };
   users = [];
   userIds = [];
@@ -104,7 +105,8 @@ export class ModalPage {
       idUser: this.auth.getUserId(),
       users: this.event.users,
       totalUsers: this.event.users.length,
-      latLng: this.event.latlng
+      latLng: this.event.latlng,
+      likes: 0
     };
     this.events.setEvent(params);
     this.navCtrl.push(FirstPage);
