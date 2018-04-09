@@ -19,10 +19,12 @@ import { AuthProvider } from '../../providers/auth/auth';
 export class DetailPage {
   map: GoogleMap;
   event: any;
+  users = [];
 
 
   constructor(private googleMaps: GoogleMaps, public navCtrl: NavController, public navParams: NavParams, public auth : AuthProvider, public events: EventsProvider) {
     this.event = this.navParams;
+    this.users = this.event.data.users;
   }
 
   ionViewDidLoad() {
@@ -69,6 +71,4 @@ export class DetailPage {
       this.event.data.likesUsers = returnLike[0];
     }
   }
-
-
 }

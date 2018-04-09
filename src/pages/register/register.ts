@@ -48,5 +48,4 @@ user = { email : '', password : '', password2 : '', nick : '', age: '', level : 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
-
 }

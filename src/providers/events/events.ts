@@ -17,11 +17,11 @@ export class EventsProvider {
   }
 
   getAllEvents() {
-      return this.dataBase.database.ref("events/");
+    return this.dataBase.database.ref("events/");
   }
 
   setEvent(params) {
-  return this.dataBase.database.ref('events/').push(params);
+    return this.dataBase.database.ref('events/').push(params);
   }
 
   updateLikesEvent(likes, event) {
@@ -42,7 +42,7 @@ export class EventsProvider {
     } else {
       return [event.likesUsers, false]      
     }
-    
+
   }
 
 }
