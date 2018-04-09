@@ -63,7 +63,7 @@ export class DetailPage {
 
   setLikeEvent() {
     var like = this.event.data.likes + 1;
-    var returnLike = this.events.updateLikesEvent(like, this.event.data.likesUsers, this.event.data.idUser);
+    var returnLike = this.events.updateLikesEvent(like, this.event.data);
     if (returnLike[1]) {
       this.event.data.likes = like;
       this.event.data.likesUsers = returnLike[0];

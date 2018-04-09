@@ -14,37 +14,35 @@ import { useAnimation } from '@angular/core/src/animation/dsl';
 export class EventsProvider {
 
   constructor(public auth : AuthProvider, public dataBase: AngularFireDatabase) {
-
   }
 
   getAllEvents() {
       return this.dataBase.database.ref("events/");
   }
 
-  getEventsUser() {
-
-  }
-
-  getEventFromId() {
-
-  }
-
   setEvent(params) {
   return this.dataBase.database.ref('events/').push(params);
   }
 
-  updateLikesEvent(likes, userLikes: Array<any>, id: string) {
-    if (userLikes) {
-      userLikes.push(this.auth.getUserId());
-    } else {
-      userLikes = [id];
-    }
-    if (userLikes.indexOf(id) < 0) {
-      this.dataBase.database.ref('/events/' + id)
-      .update({ likes: likes, likesUsers: userLikes });
+  updateLikesEvent(likes, event) {
+    var userLikes = [];
 
-      return [userLikes, true]
-    } 
+    if (event.likesUsers) {
+      userLikes.push(event.id);
+    } else {
+      userLikes = [event.id];
+    }
+
+    if (event.likesUsers.indexOf(event.id) === -1) {
+      event.likes = likes;
+      event.likesUsers = userLikes      
+      this.dataBase.database.ref('/events/' + event.id)
+      .update(event);
+      return [event.likesUsers, true]
+    } else {
+      return [event.likesUsers, false]      
+    }
+    
   }
 
 }
