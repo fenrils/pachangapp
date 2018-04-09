@@ -27,7 +27,7 @@ export class FirstPage {
   eventsTmp: Array<any>;
   eventsConstant: Array<any>;
   //Constructor
-  constructor( public navCtrl: NavController, public navParams: NavParams, public auth : AuthProvider,public alertCtrl : AlertController, public modalCtrl: ModalController, public events: EventsProvider ) {
+  constructor( public navCtrl: NavController, public navParams: NavParams, public auth : AuthProvider, public alertCtrl : AlertController, public modalCtrl: ModalController, public events: EventsProvider ) {
       var self = this;
       this.events.getAllEvents().on('value', function(snapshot){
         let value = snapshot.val();

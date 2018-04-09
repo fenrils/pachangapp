@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, LatLng } from '@ionic-native/google-maps';
 import { EventsProvider } from '../../providers/events/events';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the DetailPage page.
@@ -20,7 +21,7 @@ export class DetailPage {
   event: any;
 
 
-  constructor(private googleMaps: GoogleMaps, public navCtrl: NavController, public navParams: NavParams, public events: EventsProvider) {
+  constructor(private googleMaps: GoogleMaps, public navCtrl: NavController, public navParams: NavParams, public auth : AuthProvider, public events: EventsProvider) {
     this.event = this.navParams;
   }
 
@@ -62,8 +63,11 @@ export class DetailPage {
 
   setLikeEvent() {
     var like = this.event.data.likes + 1;
-    this.event.data.likes = like;
-    this.events.updateLikesEvent(like, this.event.data.id);
+    var returnLike = this.events.updateLikesEvent(like, this.event.data);
+    if (returnLike[1]) {
+      this.event.data.likes = like;
+      this.event.data.likesUsers = returnLike[0];
+    }
   }
 
 
