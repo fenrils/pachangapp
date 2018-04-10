@@ -32,6 +32,7 @@ export class ModalPage {
     likes: 0,
     likesUsers: ""
   };
+
   users = [];
   userIds = [];
   map: GoogleMap;
@@ -45,18 +46,15 @@ export class ModalPage {
       let value = snapshot.val();
       let keyArr: any[] = Object.keys(value),
         dataArr = [];
-
       keyArr.forEach((key: any) => {
         dataArr.push(value[key]);
       });
-
       self.usersConstant = dataArr;
     });
   }
 
   ionViewDidLoad() {
     this.loadMap()
-
   }
 
   closeModal() {
@@ -81,7 +79,6 @@ export class ModalPage {
   }
 
   addParticipant(user) {
-    console.log("///" + JSON.stringify(user));
 
     if (this.userIds.indexOf(user.id) <= -1) {
       console.log('entro');
@@ -93,7 +90,6 @@ export class ModalPage {
       this.event.users = this.users;
       this.userIds.push(user.id);
     }
-    console.log(this.users);
   }
 
   addEvent() {
@@ -130,7 +126,6 @@ export class ModalPage {
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
-        console.log('Map is ready!');
         this.getPosition();
         this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(
           (data) => {

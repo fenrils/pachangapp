@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, LatLng } from '@ionic-native/google-maps';
 import { EventsProvider } from '../../providers/events/events';
 import { AuthProvider } from '../../providers/auth/auth';
+import { RoomPage } from '../room/room';
+
 
 /**
  * Generated class for the DetailPage page.
@@ -19,10 +21,11 @@ import { AuthProvider } from '../../providers/auth/auth';
 export class DetailPage {
   map: GoogleMap;
   event: any;
+  usersList: Array<any>;
 
 
   constructor(private googleMaps: GoogleMaps, public navCtrl: NavController, public navParams: NavParams, public auth : AuthProvider, public events: EventsProvider) {
-    this.event = this.navParams;
+    this.event = this.navParams;    
   }
 
   ionViewDidLoad() {
@@ -70,5 +73,11 @@ export class DetailPage {
     }
   }
 
-
+  ChatRoom() {
+    var nick = this.events.aliasGenerator();
+    this.navCtrl.push(RoomPage, { 
+      nickName: nick,
+      key: this.event.data.chatRoom 
+    });
+  }
 }

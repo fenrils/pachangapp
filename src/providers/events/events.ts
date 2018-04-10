@@ -17,11 +17,22 @@ export class EventsProvider {
   }
 
   getAllEvents() {
-      return this.dataBase.database.ref("events/");
+    return this.dataBase.database.ref("events/");
   }
 
   setEvent(params) {
-  return this.dataBase.database.ref('events/').push(params);
+    var chatId = this.idGenerator();
+    var paramsChat = {
+      chats: {
+        type: "",
+        user: "",
+        message: "",
+        sendDate: ""
+      }
+    }
+    this.dataBase.database.ref('chatrooms/').child(chatId).set(paramsChat); 
+    params['chatRoom'] = chatId;
+    return this.dataBase.database.ref('events/').push(params);
   }
 
   updateLikesEvent(likes, event) {
@@ -42,7 +53,21 @@ export class EventsProvider {
     } else {
       return [event.likesUsers, false]      
     }
-    
+
   }
+
+  idGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+S4()+S4()+S4()+S4()+S4()+S4());
+}
+
+aliasGenerator() {
+  var S4 = function() {
+     return (((1+Math.random())*0x10000)|0).toString(5).substring(1);
+  };
+  return (S4());
+}
 
 }
