@@ -21,6 +21,17 @@ export class EventsProvider {
   }
 
   setEvent(params) {
+    var chatId = this.idGenerator();
+    var paramsChat = {
+      chats: {
+        type: "",
+        user: "",
+        message: "",
+        sendDate: ""
+      }
+    }
+    this.dataBase.database.ref('chatrooms/').child(chatId).set(paramsChat); 
+    params['chatRoom'] = chatId;
     return this.dataBase.database.ref('events/').push(params);
   }
 
@@ -44,5 +55,19 @@ export class EventsProvider {
     }
 
   }
+
+  idGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+S4()+S4()+S4()+S4()+S4()+S4());
+}
+
+aliasGenerator() {
+  var S4 = function() {
+     return (((1+Math.random())*0x10000)|0).toString(5).substring(1);
+  };
+  return (S4());
+}
 
 }

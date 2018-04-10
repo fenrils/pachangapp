@@ -18,6 +18,8 @@ import { FirstPage } from '../pages/first/first';
 import { RegisterPage } from '../pages/register/register';
 import { ModalPage } from '../pages/modal/modal';
 import { DetailPage } from '../pages/detail/detail';
+import { RoomPage } from '../pages/room/room';
+
 
 
 //Providers
@@ -42,7 +44,8 @@ export const firebaseConfig = {
     FirstPage,
     RegisterPage,
     ModalPage,
-    DetailPage
+    DetailPage,
+    RoomPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ export const firebaseConfig = {
     FirstPage,
     RegisterPage,
     ModalPage,
-    DetailPage
+    DetailPage,
+    RoomPage
   ],
   providers: [
     StatusBar,
