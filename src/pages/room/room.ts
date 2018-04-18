@@ -25,9 +25,6 @@ export class RoomPage {
   offStatus: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataBase: AngularFireDatabase) {
-    console.log('-->' + this.navParams.get("key"));
-    console.log('-->' + this.navParams.get("nickname"));
-    console.log('-->' + this.navParams); 
     this.roomkey = this.navParams.get("key") as string;
     this.nickname = this.navParams.get("nickName") as string;
     this.data.type = 'message';
