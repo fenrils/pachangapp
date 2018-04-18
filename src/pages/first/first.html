@@ -6,7 +6,10 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar hideBackButton="true" color="primary">
+    <button icon-only menuToggle block round color="primary" ion-button outline>
+      <ion-icon color="primary" name="menu" item-start></ion-icon>
+    </button>
     <ion-title>PachangApp</ion-title>
   </ion-navbar>
   <ion-searchbar (ionInput)="getEvents($event)"></ion-searchbar>

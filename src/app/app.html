@@ -1,9 +1,13 @@
 <ion-menu [content]="content">
-    <ion-content>
-      <ion-list>
-        <p>some menu content, could be list items</p>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
 
-  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+  <ion-content>
+    <ion-list>
+      <button outline block round menuClose ion-item *ngFor="let item of items" (click)="openPage(p)">
+        <ion-icon color="primary" item-left name="{{item.icon}}"></ion-icon>
+        {{item.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -25,6 +25,7 @@ import { RoomPage } from '../pages/room/room';
 //Providers
 import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
+import { NavigatorModelProvider } from '../providers/navigator-model/navigator-model';
 
 //Token Firebase (Backend)
 export const firebaseConfig = {
@@ -72,7 +73,8 @@ export const firebaseConfig = {
     GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    EventsProvider
+    EventsProvider,
+    NavigatorModelProvider
   ]
 })
 export class AppModule {}
