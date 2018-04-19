@@ -1,6 +1,11 @@
 <ion-menu [content]="content">
-
-  <ion-content>
+  <ion-content class="card-background-page">
+    <ion-card>
+      <img src="assets/imgs/game-controller-b.jpeg" />
+      <div class="card-title">Usuario</div>
+      <div class="card-subtitle">Correo</div>
+    </ion-card>
+    <hr>
     <ion-list>
       <button outline block round menuClose ion-item *ngFor="let item of items" (click)="navigateTo(item)">
         <ion-icon color="primary" item-left name="{{item.icon}}"></ion-icon>
