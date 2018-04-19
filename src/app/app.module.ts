@@ -9,8 +9,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { GoogleMaps } from '@ionic-native/google-maps';
-
-
 // Pages
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -19,15 +17,12 @@ import { RegisterPage } from '../pages/register/register';
 import { ModalPage } from '../pages/modal/modal';
 import { DetailPage } from '../pages/detail/detail';
 import { RoomPage } from '../pages/room/room';
-
-
-
 //Providers
 import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
 import { NavigatorModelProvider } from '../providers/navigator-model/navigator-model';
 import { SessionProvider } from '../providers/session/session';
-
+import { FirstPageModule } from '../pages/first/first.module';
 //Token Firebase (Backend)
 export const firebaseConfig = {
   apiKey: "AIzaSyB8GEPYw1Fvvu-L2GsMaJShNVGk-ZTks34",
@@ -43,7 +38,6 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    FirstPage,
     RegisterPage,
     ModalPage,
     DetailPage,
@@ -55,6 +49,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    FirstPageModule,
     HttpModule
   ],
   bootstrap: [IonicApp],
