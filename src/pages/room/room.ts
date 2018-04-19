@@ -16,8 +16,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 
 export class RoomPage {
-  @ViewChild(Content) content: Content;  
-  data = { type:'', nickname:'', message:'' };
+  @ViewChild(Content) content: Content;
+  data = { type: '', nickname: '', message: '' };
   chats = [];
   userNick: string;
   roomkey: string;
@@ -29,21 +29,21 @@ export class RoomPage {
     this.nickname = this.navParams.get("nickName") as string;
     this.data.type = 'message';
     this.data.nickname = this.nickname;
-  
-    let joinData = dataBase.database.ref('chatrooms/'+this.roomkey+'/chats').push();
+
+    let joinData = dataBase.database.ref('chatrooms/' + this.roomkey + '/chats').push();
     joinData.set({
-      type:'join',
-      user:this.nickname,
-      message:this.nickname+' has joined this room.',
-      sendDate:Date()
+      type: 'join',
+      user: this.nickname,
+      message: this.nickname + ' has joined this room.',
+      sendDate: Date()
     });
     this.data.message = '';
-  
-    dataBase.database.ref('chatrooms/'+this.roomkey+'/chats').on('value', resp => {
+
+    dataBase.database.ref('chatrooms/' + this.roomkey + '/chats').on('value', resp => {
       this.chats = [];
       this.chats = snapshotToArray(resp);
       setTimeout(() => {
-        if(this.offStatus === false) {
+        if (this.offStatus === false) {
           this.content.scrollToBottom(300);
         }
       }, 1000);
@@ -51,27 +51,27 @@ export class RoomPage {
   }
 
   sendMessage() {
-    let newData = this.dataBase.database.ref('chatrooms/'+this.roomkey+'/chats').push();
+    let newData = this.dataBase.database.ref('chatrooms/' + this.roomkey + '/chats').push();
     newData.set({
-      type:this.data.type,
-      user:this.data.nickname,
-      message:this.data.message,
-      sendDate:Date()
+      type: this.data.type,
+      user: this.data.nickname,
+      message: this.data.message,
+      sendDate: Date()
     });
     this.data.message = '';
   }
 
   exitChat() {
-    let exitData = this.dataBase.database.ref('chatrooms/'+this.roomkey+'/chats').push();
+    let exitData = this.dataBase.database.ref('chatrooms/' + this.roomkey + '/chats').push();
     exitData.set({
-      type:'exit',
-      user:this.nickname,
-      message:this.nickname+' has exited this room.',
-      sendDate:Date()
+      type: 'exit',
+      user: this.nickname,
+      message: this.nickname + ' has exited this room.',
+      sendDate: Date()
     });
-  
+
     this.offStatus = true;
-  
+
     this.navCtrl.pop();
   }
 
@@ -85,9 +85,9 @@ export const snapshotToArray = snapshot => {
   let returnArr = [];
 
   snapshot.forEach(childSnapshot => {
-      let item = childSnapshot.val();
-      //item.key = childSnapshot.key;
-      returnArr.push(item);
+    let item = childSnapshot.val();
+    //item.key = childSnapshot.key;
+    returnArr.push(item);
   });
 
   return returnArr;

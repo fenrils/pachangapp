@@ -12,7 +12,7 @@ export class HomePage {
 
   }
 
-  cerrarSesion(){
+  cerrarSesion() {
     this.auth.logout();
   }
 

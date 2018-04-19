@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AlertController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { RegisterPage } from '../register/register';
 import { FirstPage } from '../first/first';
@@ -18,39 +18,30 @@ import { FirstPage } from '../first/first';
 })
 export class LoginPage {
 
-  //Variables
-  user = { email : '', password : ''};
+  user = { email: '', password: '' };
 
-  //Constructor
   constructor(public navCtrl: NavController,
-     public navParams: NavParams,
-     public auth : AuthProvider,
-     public alertCtrl : AlertController) {
+    public navParams: NavParams,
+    public auth: AuthProvider,
+    public alertCtrl: AlertController) {
   }
 
- 
-  //Functions
-
-  //Pick user and password from form and check if is in DB
-  login()
-    {
-      this.auth.loginUser(this.user.email,this.user.password ).then((user) => { 
-        this.navCtrl.push(FirstPage); 
-      })
-      .catch(err=>{
+  login() {
+    this.auth.loginUser(this.user.email, this.user.password).then((user) => {
+      this.navCtrl.push(FirstPage);
+    })
+      .catch(err => {
         let alert = this.alertCtrl.create({
           title: 'Error',
           subTitle: err.message,
           buttons: ['Aceptar']
         });
         alert.present();
-    })
+      })
   }
 
-  //Redirects to register page
-  register(){
+  register() {
     this.navCtrl.push(RegisterPage);
-
   }
 
   ionViewDidLoad() {
