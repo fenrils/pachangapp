@@ -15,19 +15,16 @@ export class AuthProvider {
   constructor(private afAuth :  AngularFireAuth, public dataBase: AngularFireDatabase, public session: SessionProvider) {
   }
 
-      // Registro de usuario
   registerUser(user: any) {
     return this.afAuth.auth.createUserWithEmailAndPassword( user.email, user.password)
       .then((res)=> {
-         // El usuario se ha creado correctamente.
          this.setUser(user);
          this.readUser(this);
          this.session.setSession(user);
-         console.log('el USER:' + user)
       })
       .catch(err=>Promise.reject(err))
     }
-   // Login de usuario
+
   loginUser(email:string, password:string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(user=> {
@@ -36,7 +33,7 @@ export class AuthProvider {
       })
       .catch(err=>Promise.reject(err))
   }
-  // Logout de usuario
+  
   logout() {
     this.afAuth.auth.signOut().then(()=>{
     })

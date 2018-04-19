@@ -46,12 +46,9 @@ export class FirstPage {
       })
 
       this.userSession = session.getSession();
-      console.log('---' + JSON.stringify(this.userSession) + '---');
   }
 
   //Functions
-
-  
 
   setEvent() {
     this.navCtrl.push(ModalPage);
