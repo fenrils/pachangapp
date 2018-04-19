@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { SessionProvider } from '../session/session';
 
 /*
   Generated class for the AuthProvider provider.
@@ -11,7 +12,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class AuthProvider {
   public userData: any;
-  constructor(private afAuth :  AngularFireAuth, public dataBase: AngularFireDatabase) {
+  constructor(private afAuth :  AngularFireAuth, public dataBase: AngularFireDatabase, public session: SessionProvider) {
   }
 
       // Registro de usuario
@@ -21,13 +22,18 @@ export class AuthProvider {
          // El usuario se ha creado correctamente.
          this.setUser(user);
          this.readUser(this);
+         this.session.setSession(user);
+         console.log('el USER:' + user)
       })
       .catch(err=>Promise.reject(err))
     }
    // Login de usuario
   loginUser(email:string, password:string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(user=>Promise.resolve(user))
+      .then(user=> {
+        this.session.setSession(user);
+        Promise.resolve(user);
+      })
       .catch(err=>Promise.reject(err))
   }
   // Logout de usuario

@@ -26,6 +26,7 @@ import { RoomPage } from '../pages/room/room';
 import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
 import { NavigatorModelProvider } from '../providers/navigator-model/navigator-model';
+import { SessionProvider } from '../providers/session/session';
 
 //Token Firebase (Backend)
 export const firebaseConfig = {
@@ -74,7 +75,8 @@ export const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     EventsProvider,
-    NavigatorModelProvider
+    NavigatorModelProvider,
+    SessionProvider
   ]
 })
 export class AppModule {}

@@ -6,6 +6,7 @@ import { ModalPage } from '../modal/modal';
 import { DetailPage } from '../detail/detail';
 
 import { EventsProvider } from '../../providers/events/events';
+import { SessionProvider } from '../../providers/session/session';
 
 
 
@@ -26,8 +27,9 @@ export class FirstPage {
   //Variables
   eventsTmp: Array<any>;
   eventsConstant: Array<any>;
+  userSession:any;
   //Constructor
-  constructor( public navCtrl: NavController, public navParams: NavParams, public auth : AuthProvider, public alertCtrl : AlertController, public modalCtrl: ModalController, public events: EventsProvider ) {
+  constructor( public navCtrl: NavController, public navParams: NavParams, public auth : AuthProvider, public alertCtrl : AlertController, public modalCtrl: ModalController, public events: EventsProvider, public session: SessionProvider ) {
       var self = this;
       this.events.getAllEvents().on('value', function(snapshot){
         let value = snapshot.val();
@@ -42,7 +44,9 @@ export class FirstPage {
         self.eventsTmp = dataArr;
         self.eventsConstant = self.eventsTmp;
       })
- 
+
+      this.userSession = session.getSession();
+      console.log('---' + JSON.stringify(this.userSession) + '---');
   }
 
   //Functions

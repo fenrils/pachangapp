@@ -30,8 +30,8 @@ export class MyApp {
     });
   }
 
-  navigateTo() {
-    this.nav.setRoot(this.items.component);
+  navigateTo(item) {
+    this.nav.setRoot(item.component);
   }
 }
 

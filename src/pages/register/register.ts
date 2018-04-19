@@ -33,7 +33,7 @@ user = { email : '', password : '', password2 : '', nick : '', age: '', level : 
  signin(){
   this.auth.registerUser(this.user)
   .then((user) => {
-    this.navCtrl.push(FirstPage);
+    this.navCtrl.setRoot(FirstPage);
   })
   .catch(err=>{
     let alert = this.alertCtrl.create({
