@@ -5,7 +5,6 @@ import { EventsProvider } from '../../providers/events/events';
 import { AuthProvider } from '../../providers/auth/auth';
 import { RoomPage } from '../room/room';
 
-
 /**
  * Generated class for the DetailPage page.
  *

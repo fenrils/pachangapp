@@ -8,8 +8,6 @@ import { DetailPage } from '../detail/detail';
 import { EventsProvider } from '../../providers/events/events';
 import { SessionProvider } from '../../providers/session/session';
 
-
-
 /**
  * Generated class for the FirstPage page.
  *
