@@ -20,11 +20,12 @@ import { RoomPage } from '../pages/room/room';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   public rootPage: any;
-  public items:any;;
+  public items:any;
   
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider, public alertCtrl:AlertController, public navigate:NavigatorModelProvider) {
     this.rootPage = LoginPage;    
     this.items = this.navigate.getNavigate();
+    console.log(this.items );
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
