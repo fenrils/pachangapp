@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DetailPage } from '../detail/detail';
+
 import { EventsProvider } from '../../providers/events/events';
 import { SessionProvider } from '../../providers/session/session';
 /**
@@ -22,23 +24,53 @@ export class MyeventsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public events: EventsProvider, public session: SessionProvider) {
     var self = this;
-    
-      this.events.getAllEvents().on('value', function (snapshot) {
-        let value = snapshot.val();
-        let keyArr: any[] = Object.keys(value),
-          dataArr = [];
-        keyArr.forEach((key: any) => {
-          try {
-            value[key]['id'] = key;
-            dataArr.push(value[key]);
-          } catch (error) {
-          }
-        });
-
-        self.eventsTmp = dataArr;
-        self.eventsConstant = self.eventsTmp;
-      })
     this.userSession = session.getSession();
+    console.log(this.userSession)
+
+    this.events.getAllEvents().on('value', function (snapshot) {
+
+      let value = snapshot.val();
+      let keyArr: any[] = Object.keys(value),
+        dataArr = [];
+      keyArr.forEach((key: any) => {
+        try {
+          console.log(value[key].idUser + '===' + self.userSession.uid)
+          value[key]['id'] = key;
+          if (value[key].idUser === self.userSession.uid) {
+            dataArr.push(value[key]);
+          }
+          console.log(dataArr)
+        } catch (error) {
+          console.log(error);
+        }
+      });
+
+      self.eventsTmp = dataArr;
+      self.eventsConstant = self.eventsTmp;
+    })
+
+  }
+
+  getEvents(searchbar) {
+    this.eventsTmp = this.eventsConstant;
+    var q = searchbar.srcElement.value;
+
+    if (!q) {
+      return;
+    }
+
+    this.eventsTmp = this.eventsTmp.filter((v) => {
+      if (v.name && q) {
+        if (v.name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  }
+
+  openEvent(event) {
+    this.navCtrl.push(DetailPage, event);
   }
 
   ionViewDidLoad() {
