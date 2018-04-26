@@ -58,7 +58,7 @@ export class ModalPage {
   }
 
   closeModal() {
-    this.viewCtrl.dismiss();
+    this.navCtrl.setRoot(FirstPage);
   }
 
   getEvents(searchbar) {

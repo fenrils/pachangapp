@@ -37,9 +37,7 @@ export class FirstPage {
           try {
             value[key]['id'] = key;
             dataArr.push(value[key]);
-            console.log(dataArr);
           } catch (error) {
-            console.log(error);
           }
         });
 
@@ -72,7 +70,7 @@ export class FirstPage {
   }
 
   openEvent(event) {
-    this.navCtrl.push(DetailPage, event);
+    this.navCtrl.setRoot(DetailPage, event);
   }
 
   ionViewDidLoad() {

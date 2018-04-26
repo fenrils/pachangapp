@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>detail</ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="goBack()">
+              <ion-icon item-right name="ios-close-outline"></ion-icon>
+          </button>
+      </ion-buttons>
+    <ion-title>{{event.data.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
