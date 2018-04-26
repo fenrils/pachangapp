@@ -17,12 +17,16 @@ import { RegisterPage } from '../pages/register/register';
 import { ModalPage } from '../pages/modal/modal';
 import { DetailPage } from '../pages/detail/detail';
 import { RoomPage } from '../pages/room/room';
+import { MyeventsPage } from '../pages/myevents/myevents';
+import { ActiveeventsPage } from '../pages/activeevents/activeevents';
 //Providers
 import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
 import { NavigatorModelProvider } from '../providers/navigator-model/navigator-model';
 import { SessionProvider } from '../providers/session/session';
 import { FirstPageModule } from '../pages/first/first.module';
+import { MyeventsPageModule } from '../pages/myevents/myevents.module';
+import { ActiveeventsPageModule } from '../pages/activeevents/activeevents.module';
 //Token Firebase (Backend)
 export const firebaseConfig = {
   apiKey: "AIzaSyB8GEPYw1Fvvu-L2GsMaJShNVGk-ZTks34",
@@ -50,6 +54,8 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FirstPageModule,
+    MyeventsPageModule,
+    ActiveeventsPageModule,
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -61,7 +67,9 @@ export const firebaseConfig = {
     RegisterPage,
     ModalPage,
     DetailPage,
-    RoomPage
+    RoomPage,
+    MyeventsPage,
+    ActiveeventsPage
   ],
   providers: [
     StatusBar,

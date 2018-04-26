@@ -11,8 +11,8 @@ export class NavigatorModelProvider {
 
   items = [{ title: 'Ajustes', component: 'FirstPage', icon: 'settings' },
     { title: 'Home', component: 'FirstPage', icon: 'home' },
-    { title: 'Mis Eventos', component: 'MyEvents', icon: 'archive' },
-    { title: 'Eventos activos', component: 'ActiveEvents', icon: 'bookmarks' }];
+    { title: 'Mis Eventos', component: 'MyeventsPage', icon: 'archive' },
+    { title: 'Eventos activos', component: 'ActiveeventsPage', icon: 'bookmarks' }];
 
   constructor() {
   }
