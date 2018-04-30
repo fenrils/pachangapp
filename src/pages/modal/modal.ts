@@ -68,9 +68,8 @@ export class ModalPage {
       return;
     }
     this.usersTmp = this.usersTmp.filter((v) => {
-      if (v.nick && q.charAt(0) === '@' && q.length > 2) {
-        var k = q.substr(1);
-        if (v.nick.toLowerCase().indexOf(k.toLowerCase()) > -1) {
+      if (q && v.nick) {
+        if (v.nick.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           return true;
         }
         return false;

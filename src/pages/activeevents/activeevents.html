@@ -1,20 +1,64 @@
 <!--
-  Generated template for the ActiveeventsPage page.
+  Generated template for the MyeventsPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
-  
-    <ion-navbar hideBackButton="true" color="primary">
-      <button icon-only menuToggle block round color="light" ion-button outline>
-        <ion-icon color="light" name="menu" item-start></ion-icon>
-      </button>
-      <ion-title>Eventos Activos</ion-title>
-    </ion-navbar>  
-  </ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    
+      <ion-navbar hideBackButton="true" color="primary">
+        <button icon-only menuToggle block round color="light" ion-button outline>
+          <ion-icon color="light" name="menu" item-start></ion-icon>
+        </button>
+        <ion-title>Mis Eventos</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    <ion-content padding>
+      <ion-fab bottom right>
+        <button ion-fab (click)="setEvent()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-fab>
+      <div *ngFor="let event of eventsTmp">
+        <ion-card>
+          <button (click)="openEvent(event)" ion-item>
+            <img src="assets/imgs/{{event.typeEvent}}.jpeg" />
+            <ion-card-content>
+              <ion-card-title center text-center>
+                {{event.name}}
+                <ion-icon name="{{event.typeEvent}}" item-right></ion-icon>
+              </ion-card-title>
+              <ion-note>
+                Descripción
+              </ion-note>
+              <p>
+                {{event.description}}
+              </p>
+            </ion-card-content>
+            <ion-row>
+              <ion-col>
+                <button ion-button icon-left clear small>
+                  <ion-icon icon-left clear small name="calendar"></ion-icon>
+                  <div>{{event.date}}</div>
+                </button>
+              </ion-col>
+              <ion-col>
+                <button ion-button icon-left clear small>
+                  <ion-icon name="timer"></ion-icon>
+                  <div>{{event.duration}} mins</div>
+                </button>
+              </ion-col>
+              <ion-col>
+                <button ion-button icon-left clear small>
+                  <ion-icon name="people"></ion-icon>
+                  <div>{{event.totalUsers}} </div>
+                </button>
+              </ion-col>
+    
+            </ion-row>
+          </button>
+        </ion-card>
+      </div>
+    
+    </ion-content>
