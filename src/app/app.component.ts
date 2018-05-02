@@ -13,6 +13,8 @@ import { RegisterPage } from '../pages/register/register';
 import { ModalPage } from '../pages/modal/modal';
 import { DetailPage } from '../pages/detail/detail';
 import { RoomPage } from '../pages/room/room';
+import { SessionProvider } from '../providers/session/session';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -21,8 +23,9 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   public rootPage: any;
   public items:any;
+  public userImage;
   
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider, public alertCtrl:AlertController, public navigate:NavigatorModelProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider, public alertCtrl:AlertController, public navigate:NavigatorModelProvider, public userSession: SessionProvider) {
     this.rootPage = LoginPage;    
     this.items = this.navigate.getNavigate();
     console.log(this.items );
@@ -32,7 +35,11 @@ export class MyApp {
       this.auth.Session.subscribe(session=>{
         if(!session){
             this.rootPage = LoginPage;
+        } else {
+          this.userImage = this.userSession.getImageUser() ? this.userSession.getImageUser() : 'assets/imgs/avatar-han.png';
+
         }
+
       });
       statusBar.styleDefault();
       splashScreen.hide();

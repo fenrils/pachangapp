@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { GoogleMaps } from '@ionic-native/google-maps';
@@ -30,6 +31,8 @@ import { SessionProvider } from '../providers/session/session';
 import { FirstPageModule } from '../pages/first/first.module';
 import { MyeventsPageModule } from '../pages/myevents/myevents.module';
 import { ActiveeventsPageModule } from '../pages/activeevents/activeevents.module';
+import { PhotoLibrary } from '@ionic-native/photo-library';
+
 import {Camera} from "@ionic-native/camera";
 //Token Firebase (Backend)
 export const firebaseConfig = {
@@ -57,6 +60,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     FirstPageModule,
     MyeventsPageModule,
     ActiveeventsPageModule,
@@ -87,7 +91,9 @@ export const firebaseConfig = {
     NavigatorModelProvider,
     SessionProvider,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PhotoLibrary
+    
   ]
 })
 export class AppModule {}
