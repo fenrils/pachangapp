@@ -80,7 +80,6 @@ export class ModalPage {
   addParticipant(user) {
 
     if (this.userIds.indexOf(user.id) <= -1) {
-      console.log('entro');
       this.users.push({
         'id': user.id,
         'nick': user.nick,

@@ -1,0 +1,50 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon item-right name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Ajustes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="img-side-menu">
+    <img class="circle-pic" [src]="currentPhoto" />
+    <div class="card-title">
+      <button ion-button block outline (click)="getPhoto(picture)">Editar Foto</button>
+    </div>
+  </div>
+  <hr>
+
+  <ion-item>
+    <ion-label floating>Email</ion-label>
+    <ion-input [(ngModel)]="usersConstant.email" name="email" type="text" autocapitalize="off" value="{{usersConstant.email}}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Nickname</ion-label>
+    <ion-input [(ngModel)]="usersConstant.nick" name="nick" type="text" value="{{usersConstant.nick}}">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Edad</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="usersConstant.age" [ngModelOptions]="{standalone: true}"></ion-datetime>
+  </ion-item>
+
+  <div class="save-settings">
+    <button ion-button full >Guardar</button>
+  </div>
+  
+</ion-content>

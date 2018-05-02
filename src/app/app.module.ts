@@ -19,6 +19,9 @@ import { DetailPage } from '../pages/detail/detail';
 import { RoomPage } from '../pages/room/room';
 import { MyeventsPage } from '../pages/myevents/myevents';
 import { ActiveeventsPage } from '../pages/activeevents/activeevents';
+import { SettingsPage } from '../pages/settings/settings'; 
+import { SettingsPageModule } from '../pages/settings/settings.module';
+
 //Providers
 import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
@@ -27,6 +30,7 @@ import { SessionProvider } from '../providers/session/session';
 import { FirstPageModule } from '../pages/first/first.module';
 import { MyeventsPageModule } from '../pages/myevents/myevents.module';
 import { ActiveeventsPageModule } from '../pages/activeevents/activeevents.module';
+import {Camera} from "@ionic-native/camera";
 //Token Firebase (Backend)
 export const firebaseConfig = {
   apiKey: "AIzaSyB8GEPYw1Fvvu-L2GsMaJShNVGk-ZTks34",
@@ -56,6 +60,7 @@ export const firebaseConfig = {
     FirstPageModule,
     MyeventsPageModule,
     ActiveeventsPageModule,
+    SettingsPageModule,
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -69,7 +74,8 @@ export const firebaseConfig = {
     DetailPage,
     RoomPage,
     MyeventsPage,
-    ActiveeventsPage
+    ActiveeventsPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
@@ -79,7 +85,9 @@ export const firebaseConfig = {
     AuthProvider,
     EventsProvider,
     NavigatorModelProvider,
-    SessionProvider
+    SessionProvider,
+    Camera,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
