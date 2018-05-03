@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { GoogleMaps } from '@ionic-native/google-maps';
@@ -17,12 +18,22 @@ import { RegisterPage } from '../pages/register/register';
 import { ModalPage } from '../pages/modal/modal';
 import { DetailPage } from '../pages/detail/detail';
 import { RoomPage } from '../pages/room/room';
+import { MyeventsPage } from '../pages/myevents/myevents';
+import { ActiveeventsPage } from '../pages/activeevents/activeevents';
+import { SettingsPage } from '../pages/settings/settings'; 
+import { SettingsPageModule } from '../pages/settings/settings.module';
+
 //Providers
 import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
 import { NavigatorModelProvider } from '../providers/navigator-model/navigator-model';
 import { SessionProvider } from '../providers/session/session';
 import { FirstPageModule } from '../pages/first/first.module';
+import { MyeventsPageModule } from '../pages/myevents/myevents.module';
+import { ActiveeventsPageModule } from '../pages/activeevents/activeevents.module';
+import { PhotoLibrary } from '@ionic-native/photo-library';
+
+import {Camera} from "@ionic-native/camera";
 //Token Firebase (Backend)
 export const firebaseConfig = {
   apiKey: "AIzaSyB8GEPYw1Fvvu-L2GsMaJShNVGk-ZTks34",
@@ -49,7 +60,11 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     FirstPageModule,
+    MyeventsPageModule,
+    ActiveeventsPageModule,
+    SettingsPageModule,
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -61,7 +76,10 @@ export const firebaseConfig = {
     RegisterPage,
     ModalPage,
     DetailPage,
-    RoomPage
+    RoomPage,
+    MyeventsPage,
+    ActiveeventsPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
@@ -71,7 +89,11 @@ export const firebaseConfig = {
     AuthProvider,
     EventsProvider,
     NavigatorModelProvider,
-    SessionProvider
+    SessionProvider,
+    Camera,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PhotoLibrary
+    
   ]
 })
 export class AppModule {}

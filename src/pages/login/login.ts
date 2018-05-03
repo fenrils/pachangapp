@@ -28,7 +28,7 @@ export class LoginPage {
 
   login() {
     this.auth.loginUser(this.user.email, this.user.password).then((user) => {
-      this.navCtrl.push(FirstPage);
+      this.navCtrl.setRoot(FirstPage);
     })
       .catch(err => {
         let alert = this.alertCtrl.create({

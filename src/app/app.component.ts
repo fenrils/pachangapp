@@ -13,6 +13,8 @@ import { RegisterPage } from '../pages/register/register';
 import { ModalPage } from '../pages/modal/modal';
 import { DetailPage } from '../pages/detail/detail';
 import { RoomPage } from '../pages/room/room';
+import { SessionProvider } from '../providers/session/session';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -20,19 +22,25 @@ import { RoomPage } from '../pages/room/room';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   public rootPage: any;
-  public items:any;;
+  public items:any;
+  public userImage;
   
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider, public alertCtrl:AlertController, public navigate:NavigatorModelProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider, public alertCtrl:AlertController, public navigate:NavigatorModelProvider, public userSession: SessionProvider) {
     this.rootPage = LoginPage;    
     this.items = this.navigate.getNavigate();
+    console.log(this.items );
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.auth.Session.subscribe(session=>{
         if(!session){
             this.rootPage = LoginPage;
-        }
+        } 
+        console.log('///' + this.userSession.getImageUser());
+        this.userImage = this.userSession.getImageUser();
+        
       });
+    
       statusBar.styleDefault();
       splashScreen.hide();
     });

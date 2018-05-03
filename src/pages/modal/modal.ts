@@ -58,7 +58,7 @@ export class ModalPage {
   }
 
   closeModal() {
-    this.viewCtrl.dismiss();
+    this.navCtrl.setRoot(FirstPage);
   }
 
   getEvents(searchbar) {
@@ -68,9 +68,8 @@ export class ModalPage {
       return;
     }
     this.usersTmp = this.usersTmp.filter((v) => {
-      if (v.nick && q.charAt(0) === '@' && q.length > 2) {
-        var k = q.substr(1);
-        if (v.nick.toLowerCase().indexOf(k.toLowerCase()) > -1) {
+      if (q && v.nick) {
+        if (v.nick.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           return true;
         }
         return false;
@@ -81,7 +80,6 @@ export class ModalPage {
   addParticipant(user) {
 
     if (this.userIds.indexOf(user.id) <= -1) {
-      console.log('entro');
       this.users.push({
         'id': user.id,
         'nick': user.nick,

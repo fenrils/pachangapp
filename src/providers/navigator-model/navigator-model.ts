@@ -9,10 +9,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class NavigatorModelProvider {
 
-  items = [{ title: 'Ajustes', component: 'FirstPage', icon: 'settings' },
+  items = [{ title: 'Ajustes', component: 'SettingsPage', icon: 'settings' },
     { title: 'Home', component: 'FirstPage', icon: 'home' },
-    { title: 'Mis Eventos', component: 'FirstPage', icon: 'archive' },
-    { title: 'Eventos activos', component: 'FirstPage', icon: 'bookmarks' }];
+    { title: 'Mis Eventos', component: 'MyeventsPage', icon: 'archive' },
+    { title: 'Eventos activos', component: 'ActiveeventsPage', icon: 'bookmarks' }];
 
   constructor() {
   }

@@ -4,7 +4,7 @@ import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, LatLng } from
 import { EventsProvider } from '../../providers/events/events';
 import { AuthProvider } from '../../providers/auth/auth';
 import { RoomPage } from '../room/room';
-
+import { FirstPage } from '../first/first';
 
 /**
  * Generated class for the DetailPage page.
@@ -80,4 +80,8 @@ export class DetailPage {
       key: this.event.data.chatRoom 
     });
   }
+
+  goBack() {
+    this.navCtrl.setRoot(FirstPage);
+   }
 }

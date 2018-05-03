@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 export class SessionProvider {
   
   userSession:any;
+  imageUser;
 
   constructor() {  
     
@@ -17,6 +18,14 @@ export class SessionProvider {
 
   getSession() {
     return this.userSession;
+  }
+
+  getImageUser() {
+    return this.imageUser;
+  }
+
+  setImageUser(image) {
+    this.imageUser = image;
   }
 
   setSession(session) {
