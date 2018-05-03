@@ -35,12 +35,12 @@ export class MyApp {
       this.auth.Session.subscribe(session=>{
         if(!session){
             this.rootPage = LoginPage;
-        } else {
-          this.userImage = this.userSession.getImageUser() ? this.userSession.getImageUser() : 'assets/imgs/avatar-han.png';
-
-        }
-
+        } 
+        console.log('///' + this.userSession.getImageUser());
+        this.userImage = this.userSession.getImageUser();
+        
       });
+    
       statusBar.styleDefault();
       splashScreen.hide();
     });

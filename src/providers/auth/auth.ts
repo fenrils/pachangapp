@@ -5,8 +5,6 @@ import { SessionProvider } from '../session/session';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import * as firebase from 'firebase';
 
-
-
 /*
   Generated class for the AuthProvider provider.
 
@@ -30,13 +28,15 @@ export class AuthProvider {
   }
 
   loginUser(email: string, password: string) {
+    var self = this;
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(user => {
         this.session.setSession(user);
         var storage = firebase.storage();
         try {
           storage.ref().child('images/' + user.uid + '.jpg').getDownloadURL().then(function (url) {
-            this.saveToAlbum(url)
+            var pic = document.getElementById("circle-pic");
+            pic.setAttribute("src", url);            
           });
         } catch (e) {
           console.log(e);

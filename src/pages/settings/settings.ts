@@ -83,9 +83,10 @@ export class SettingsPage {
 
   onSuccess = (snapshot) => {
     this.currentPhoto = snapshot.downloadURL;
+    var pic = document.getElementById("circle-pic");
+    pic.setAttribute("src", snapshot.downloadURL);                
     this.userSession.setImageUser(this.currentPhoto);
     this.app.userImage = snapshot.downloadURL;
-    
   }
 
   onError = (error) => {
