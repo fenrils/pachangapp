@@ -36,7 +36,6 @@ export class ActiveeventsPage {
         try {
           value[key]['id'] = key;
           value[key].users.forEach((item, index) => {
-            console.log(item.id + '===' + self.userSession.uid);
             if (item.id === self.userSession.uid) {
               dataArr.push(value[key]);
             }

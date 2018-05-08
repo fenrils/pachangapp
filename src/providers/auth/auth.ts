@@ -52,7 +52,6 @@ export class AuthProvider {
     var self = this;
     this.photoLibrary.saveImage(url, album).then((entry => {
       self.session.setImageUser(entry.photoURL);
-      console.log('download complete: ' + entry.photoURL);
     }),
       (error) => {
         // handle error
@@ -62,6 +61,10 @@ export class AuthProvider {
   logout() {
     this.afAuth.auth.signOut().then(() => {
     })
+  }
+
+  updateUser(user) {
+    this.dataBase.database.ref("user/" + user.id).update(user);
   }
 
   getAllUsers() {

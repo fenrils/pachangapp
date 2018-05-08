@@ -27,10 +27,10 @@ export class SettingsPage {
   userSession: any;
   loading;
 
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public auth: AuthProvider, public session: SessionProvider, loadingCtrl: LoadingController, public app: MyApp) {
     var self = this;
     this.userSession = session.getSession();
+    this.getPic();
     this.auth.getAllUsers().on('value', function (snapshot) {
       let value = snapshot.val();
       let keyArr: any[] = Object.keys(value),
@@ -46,6 +46,23 @@ export class SettingsPage {
     });
   }
 
+  ionViewDidLoad() {
+
+  }
+
+  getPic(){
+    var self = this;
+    var storage = firebase.storage();
+    try {
+      storage.ref().child('images/' + this.userSession.uid + '.jpg').getDownloadURL().then(function (url) {
+        self.currentPhoto = url;            
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
   getPhoto(type) {
     var self = this;
     const options: CameraOptions = {
@@ -59,7 +76,6 @@ export class SettingsPage {
       correctOrientation: true
     };
 
-
     this.camera.getPicture(options).then((file_uri) => {
 
       this.selectedPhoto = self.dataURItoBlob('data:image/jpeg;base64,' + file_uri);;
@@ -70,6 +86,10 @@ export class SettingsPage {
       // Handle error
     });
 
+  }
+
+  saveUpdate() {
+    this.auth.updateUser(this.usersConstant);
   }
 
   dataURItoBlob(dataURI) {
@@ -93,12 +113,8 @@ export class SettingsPage {
     console.log('error', error);
   }
 
-
   goBack() {
     this.navCtrl.setRoot(FirstPage);
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
   }
 
 }

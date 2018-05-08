@@ -10,6 +10,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { PhotoLibrary } from '@ionic-native/photo-library';
+import {Camera} from "@ionic-native/camera";
 // Pages
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -31,9 +33,7 @@ import { SessionProvider } from '../providers/session/session';
 import { FirstPageModule } from '../pages/first/first.module';
 import { MyeventsPageModule } from '../pages/myevents/myevents.module';
 import { ActiveeventsPageModule } from '../pages/activeevents/activeevents.module';
-import { PhotoLibrary } from '@ionic-native/photo-library';
 
-import {Camera} from "@ionic-native/camera";
 //Token Firebase (Backend)
 export const firebaseConfig = {
   apiKey: "AIzaSyB8GEPYw1Fvvu-L2GsMaJShNVGk-ZTks34",
